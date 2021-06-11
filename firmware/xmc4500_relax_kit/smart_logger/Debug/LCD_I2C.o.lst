@@ -1,0 +1,694 @@
+   1              	 .syntax unified
+   2              	 .cpu cortex-m4
+   3              	 .eabi_attribute 27,3
+   4              	 .fpu fpv4-sp-d16
+   5              	 .eabi_attribute 20,1
+   6              	 .eabi_attribute 21,1
+   7              	 .eabi_attribute 23,3
+   8              	 .eabi_attribute 24,1
+   9              	 .eabi_attribute 25,1
+  10              	 .eabi_attribute 26,1
+  11              	 .eabi_attribute 30,6
+  12              	 .eabi_attribute 34,1
+  13              	 .eabi_attribute 18,4
+  14              	 .thumb
+  15              	 .file "LCD_I2C.c"
+  16              	 .text
+  17              	.Ltext0:
+  18              	 .cfi_sections .debug_frame
+  19              	 .section .text.delay,"ax",%progbits
+  20              	 .align 2
+  21              	 .global delay
+  22              	 .thumb
+  23              	 .thumb_func
+  25              	delay:
+  26              	.LFB433:
+  27              	 .file 1 "../LCD_I2C.c"
+   1:../LCD_I2C.c  **** 
+   2:../LCD_I2C.c  **** #include <DAVE.h>                 //Declarations from DAVE Code Generation (includes SFR declaratio
+   3:../LCD_I2C.c  **** #include "LCD_I2C.h"
+   4:../LCD_I2C.c  **** 
+   5:../LCD_I2C.c  **** 
+   6:../LCD_I2C.c  **** 
+   7:../LCD_I2C.c  **** void delay(int n) //Universal delay routine
+   8:../LCD_I2C.c  **** {
+  28              	 .loc 1 8 0
+  29              	 .cfi_startproc
+  30              	 
+  31              	 
+  32              	 
+  33 0000 80B4     	 push {r7}
+  34              	.LCFI0:
+  35              	 .cfi_def_cfa_offset 4
+  36              	 .cfi_offset 7,-4
+  37 0002 85B0     	 sub sp,sp,#20
+  38              	.LCFI1:
+  39              	 .cfi_def_cfa_offset 24
+  40 0004 00AF     	 add r7,sp,#0
+  41              	.LCFI2:
+  42              	 .cfi_def_cfa_register 7
+  43 0006 7860     	 str r0,[r7,#4]
+   9:../LCD_I2C.c  ****  int i=0,j=0;
+  44              	 .loc 1 9 0
+  45 0008 0023     	 movs r3,#0
+  46 000a FB60     	 str r3,[r7,#12]
+  47 000c 0023     	 movs r3,#0
+  48 000e BB60     	 str r3,[r7,#8]
+  10:../LCD_I2C.c  ****  for(i=0;i<=n;i++)
+  49              	 .loc 1 10 0
+  50 0010 0023     	 movs r3,#0
+  51 0012 FB60     	 str r3,[r7,#12]
+  52 0014 0BE0     	 b .L2
+  53              	.L5:
+  11:../LCD_I2C.c  ****  for(j=0;j<=10;j++);
+  54              	 .loc 1 11 0
+  55 0016 0023     	 movs r3,#0
+  56 0018 BB60     	 str r3,[r7,#8]
+  57 001a 02E0     	 b .L3
+  58              	.L4:
+  59              	 .loc 1 11 0 is_stmt 0 discriminator 3
+  60 001c BB68     	 ldr r3,[r7,#8]
+  61 001e 0133     	 adds r3,r3,#1
+  62 0020 BB60     	 str r3,[r7,#8]
+  63              	.L3:
+  64              	 .loc 1 11 0 discriminator 1
+  65 0022 BB68     	 ldr r3,[r7,#8]
+  66 0024 0A2B     	 cmp r3,#10
+  67 0026 F9DD     	 ble .L4
+  10:../LCD_I2C.c  ****  for(i=0;i<=n;i++)
+  68              	 .loc 1 10 0 is_stmt 1 discriminator 2
+  69 0028 FB68     	 ldr r3,[r7,#12]
+  70 002a 0133     	 adds r3,r3,#1
+  71 002c FB60     	 str r3,[r7,#12]
+  72              	.L2:
+  10:../LCD_I2C.c  ****  for(i=0;i<=n;i++)
+  73              	 .loc 1 10 0 is_stmt 0 discriminator 1
+  74 002e FA68     	 ldr r2,[r7,#12]
+  75 0030 7B68     	 ldr r3,[r7,#4]
+  76 0032 9A42     	 cmp r2,r3
+  77 0034 EFDD     	 ble .L5
+  12:../LCD_I2C.c  **** }
+  78              	 .loc 1 12 0 is_stmt 1
+  79 0036 1437     	 adds r7,r7,#20
+  80              	.LCFI3:
+  81              	 .cfi_def_cfa_offset 4
+  82 0038 BD46     	 mov sp,r7
+  83              	.LCFI4:
+  84              	 .cfi_def_cfa_register 13
+  85              	 
+  86 003a 5DF8047B 	 ldr r7,[sp],#4
+  87              	.LCFI5:
+  88              	 .cfi_restore 7
+  89              	 .cfi_def_cfa_offset 0
+  90 003e 7047     	 bx lr
+  91              	 .cfi_endproc
+  92              	.LFE433:
+  94              	 .section .text.LCDWriteData,"ax",%progbits
+  95              	 .align 2
+  96              	 .global LCDWriteData
+  97              	 .thumb
+  98              	 .thumb_func
+ 100              	LCDWriteData:
+ 101              	.LFB434:
+  13:../LCD_I2C.c  **** 
+  14:../LCD_I2C.c  **** void LCDWriteData(uint8_t data)
+  15:../LCD_I2C.c  **** {
+ 102              	 .loc 1 15 0
+ 103              	 .cfi_startproc
+ 104              	 
+ 105              	 
+ 106 0000 90B5     	 push {r4,r7,lr}
+ 107              	.LCFI6:
+ 108              	 .cfi_def_cfa_offset 12
+ 109              	 .cfi_offset 4,-12
+ 110              	 .cfi_offset 7,-8
+ 111              	 .cfi_offset 14,-4
+ 112 0002 87B0     	 sub sp,sp,#28
+ 113              	.LCFI7:
+ 114              	 .cfi_def_cfa_offset 40
+ 115 0004 02AF     	 add r7,sp,#8
+ 116              	.LCFI8:
+ 117              	 .cfi_def_cfa 7,32
+ 118 0006 0346     	 mov r3,r0
+ 119 0008 FB71     	 strb r3,[r7,#7]
+  16:../LCD_I2C.c  **** 
+  17:../LCD_I2C.c  **** 	uint8_t temp;
+  18:../LCD_I2C.c  **** 	temp = (data & 0xf0) + 9;
+ 120              	 .loc 1 18 0
+ 121 000a FB79     	 ldrb r3,[r7,#7]
+ 122 000c 23F00F03 	 bic r3,r3,#15
+ 123 0010 DBB2     	 uxtb r3,r3
+ 124 0012 0933     	 adds r3,r3,#9
+ 125 0014 DBB2     	 uxtb r3,r3
+ 126 0016 FB73     	 strb r3,[r7,#15]
+  19:../LCD_I2C.c  **** 	I2C_MASTER_Transmit(&I2C_LCD,true,0x4e,&temp,1,true);
+ 127              	 .loc 1 19 0
+ 128 0018 07F10F04 	 add r4,r7,#15
+ 129 001c 0123     	 movs r3,#1
+ 130 001e 0093     	 str r3,[sp]
+ 131 0020 0123     	 movs r3,#1
+ 132 0022 0193     	 str r3,[sp,#4]
+ 133 0024 2E48     	 ldr r0,.L7
+ 134 0026 0121     	 movs r1,#1
+ 135 0028 4E22     	 movs r2,#78
+ 136 002a 2346     	 mov r3,r4
+ 137 002c FFF7FEFF 	 bl I2C_MASTER_Transmit
+  20:../LCD_I2C.c  **** 
+  21:../LCD_I2C.c  **** 	temp = temp + 0x4;
+ 138              	 .loc 1 21 0
+ 139 0030 FB7B     	 ldrb r3,[r7,#15]
+ 140 0032 0433     	 adds r3,r3,#4
+ 141 0034 DBB2     	 uxtb r3,r3
+ 142 0036 FB73     	 strb r3,[r7,#15]
+  22:../LCD_I2C.c  **** 	I2C_MASTER_Transmit(&I2C_LCD,true,0x4e,&temp,1,true);
+ 143              	 .loc 1 22 0
+ 144 0038 07F10F04 	 add r4,r7,#15
+ 145 003c 0123     	 movs r3,#1
+ 146 003e 0093     	 str r3,[sp]
+ 147 0040 0123     	 movs r3,#1
+ 148 0042 0193     	 str r3,[sp,#4]
+ 149 0044 2648     	 ldr r0,.L7
+ 150 0046 0121     	 movs r1,#1
+ 151 0048 4E22     	 movs r2,#78
+ 152 004a 2346     	 mov r3,r4
+ 153 004c FFF7FEFF 	 bl I2C_MASTER_Transmit
+  23:../LCD_I2C.c  **** 	temp = temp & 0xFA;
+ 154              	 .loc 1 23 0
+ 155 0050 FB7B     	 ldrb r3,[r7,#15]
+ 156 0052 23F00503 	 bic r3,r3,#5
+ 157 0056 DBB2     	 uxtb r3,r3
+ 158 0058 FB73     	 strb r3,[r7,#15]
+  24:../LCD_I2C.c  **** 	I2C_MASTER_Transmit(&I2C_LCD,true,0x4e,&temp,1,true);
+ 159              	 .loc 1 24 0
+ 160 005a 07F10F04 	 add r4,r7,#15
+ 161 005e 0123     	 movs r3,#1
+ 162 0060 0093     	 str r3,[sp]
+ 163 0062 0123     	 movs r3,#1
+ 164 0064 0193     	 str r3,[sp,#4]
+ 165 0066 1E48     	 ldr r0,.L7
+ 166 0068 0121     	 movs r1,#1
+ 167 006a 4E22     	 movs r2,#78
+ 168 006c 2346     	 mov r3,r4
+ 169 006e FFF7FEFF 	 bl I2C_MASTER_Transmit
+  25:../LCD_I2C.c  **** 
+  26:../LCD_I2C.c  **** 	temp = ((data << 4) & 0xf0) + 9;
+ 170              	 .loc 1 26 0
+ 171 0072 FB79     	 ldrb r3,[r7,#7]
+ 172 0074 1B01     	 lsls r3,r3,#4
+ 173 0076 DBB2     	 uxtb r3,r3
+ 174 0078 0933     	 adds r3,r3,#9
+ 175 007a DBB2     	 uxtb r3,r3
+ 176 007c FB73     	 strb r3,[r7,#15]
+  27:../LCD_I2C.c  **** 	I2C_MASTER_Transmit(&I2C_LCD,true,0x4e,&temp,1,true);
+ 177              	 .loc 1 27 0
+ 178 007e 07F10F04 	 add r4,r7,#15
+ 179 0082 0123     	 movs r3,#1
+ 180 0084 0093     	 str r3,[sp]
+ 181 0086 0123     	 movs r3,#1
+ 182 0088 0193     	 str r3,[sp,#4]
+ 183 008a 1548     	 ldr r0,.L7
+ 184 008c 0121     	 movs r1,#1
+ 185 008e 4E22     	 movs r2,#78
+ 186 0090 2346     	 mov r3,r4
+ 187 0092 FFF7FEFF 	 bl I2C_MASTER_Transmit
+  28:../LCD_I2C.c  **** 
+  29:../LCD_I2C.c  **** 	temp = temp + 0x4;
+ 188              	 .loc 1 29 0
+ 189 0096 FB7B     	 ldrb r3,[r7,#15]
+ 190 0098 0433     	 adds r3,r3,#4
+ 191 009a DBB2     	 uxtb r3,r3
+ 192 009c FB73     	 strb r3,[r7,#15]
+  30:../LCD_I2C.c  **** 	I2C_MASTER_Transmit(&I2C_LCD,true,0x4e,&temp,1,true);
+ 193              	 .loc 1 30 0
+ 194 009e 07F10F04 	 add r4,r7,#15
+ 195 00a2 0123     	 movs r3,#1
+ 196 00a4 0093     	 str r3,[sp]
+ 197 00a6 0123     	 movs r3,#1
+ 198 00a8 0193     	 str r3,[sp,#4]
+ 199 00aa 0D48     	 ldr r0,.L7
+ 200 00ac 0121     	 movs r1,#1
+ 201 00ae 4E22     	 movs r2,#78
+ 202 00b0 2346     	 mov r3,r4
+ 203 00b2 FFF7FEFF 	 bl I2C_MASTER_Transmit
+  31:../LCD_I2C.c  **** 	temp = temp & 0xFA;
+ 204              	 .loc 1 31 0
+ 205 00b6 FB7B     	 ldrb r3,[r7,#15]
+ 206 00b8 23F00503 	 bic r3,r3,#5
+ 207 00bc DBB2     	 uxtb r3,r3
+ 208 00be FB73     	 strb r3,[r7,#15]
+  32:../LCD_I2C.c  **** 	I2C_MASTER_Transmit(&I2C_LCD,true,0x4e,&temp,1,true);
+ 209              	 .loc 1 32 0
+ 210 00c0 07F10F04 	 add r4,r7,#15
+ 211 00c4 0123     	 movs r3,#1
+ 212 00c6 0093     	 str r3,[sp]
+ 213 00c8 0123     	 movs r3,#1
+ 214 00ca 0193     	 str r3,[sp,#4]
+ 215 00cc 0448     	 ldr r0,.L7
+ 216 00ce 0121     	 movs r1,#1
+ 217 00d0 4E22     	 movs r2,#78
+ 218 00d2 2346     	 mov r3,r4
+ 219 00d4 FFF7FEFF 	 bl I2C_MASTER_Transmit
+  33:../LCD_I2C.c  **** 
+  34:../LCD_I2C.c  **** }
+ 220              	 .loc 1 34 0
+ 221 00d8 1437     	 adds r7,r7,#20
+ 222              	.LCFI9:
+ 223              	 .cfi_def_cfa_offset 12
+ 224 00da BD46     	 mov sp,r7
+ 225              	.LCFI10:
+ 226              	 .cfi_def_cfa_register 13
+ 227              	 
+ 228 00dc 90BD     	 pop {r4,r7,pc}
+ 229              	.L8:
+ 230 00de 00BF     	 .align 2
+ 231              	.L7:
+ 232 00e0 00000000 	 .word I2C_LCD
+ 233              	 .cfi_endproc
+ 234              	.LFE434:
+ 236              	 .section .text.LCDWriteCommand,"ax",%progbits
+ 237              	 .align 2
+ 238              	 .global LCDWriteCommand
+ 239              	 .thumb
+ 240              	 .thumb_func
+ 242              	LCDWriteCommand:
+ 243              	.LFB435:
+  35:../LCD_I2C.c  **** 
+  36:../LCD_I2C.c  **** void LCDWriteCommand(uint8_t command)
+  37:../LCD_I2C.c  **** {
+ 244              	 .loc 1 37 0
+ 245              	 .cfi_startproc
+ 246              	 
+ 247              	 
+ 248 0000 90B5     	 push {r4,r7,lr}
+ 249              	.LCFI11:
+ 250              	 .cfi_def_cfa_offset 12
+ 251              	 .cfi_offset 4,-12
+ 252              	 .cfi_offset 7,-8
+ 253              	 .cfi_offset 14,-4
+ 254 0002 87B0     	 sub sp,sp,#28
+ 255              	.LCFI12:
+ 256              	 .cfi_def_cfa_offset 40
+ 257 0004 02AF     	 add r7,sp,#8
+ 258              	.LCFI13:
+ 259              	 .cfi_def_cfa 7,32
+ 260 0006 0346     	 mov r3,r0
+ 261 0008 FB71     	 strb r3,[r7,#7]
+  38:../LCD_I2C.c  **** 
+  39:../LCD_I2C.c  **** 	uint8_t temp;
+  40:../LCD_I2C.c  **** 	temp = (command & 0xf0) + 8;
+ 262              	 .loc 1 40 0
+ 263 000a FB79     	 ldrb r3,[r7,#7]
+ 264 000c 23F00F03 	 bic r3,r3,#15
+ 265 0010 DBB2     	 uxtb r3,r3
+ 266 0012 0833     	 adds r3,r3,#8
+ 267 0014 DBB2     	 uxtb r3,r3
+ 268 0016 FB73     	 strb r3,[r7,#15]
+  41:../LCD_I2C.c  **** 	I2C_MASTER_Transmit(&I2C_LCD,true,0x4e,&temp,1,true);
+ 269              	 .loc 1 41 0
+ 270 0018 07F10F04 	 add r4,r7,#15
+ 271 001c 0123     	 movs r3,#1
+ 272 001e 0093     	 str r3,[sp]
+ 273 0020 0123     	 movs r3,#1
+ 274 0022 0193     	 str r3,[sp,#4]
+ 275 0024 2E48     	 ldr r0,.L10
+ 276 0026 0121     	 movs r1,#1
+ 277 0028 4E22     	 movs r2,#78
+ 278 002a 2346     	 mov r3,r4
+ 279 002c FFF7FEFF 	 bl I2C_MASTER_Transmit
+  42:../LCD_I2C.c  **** 
+  43:../LCD_I2C.c  **** 	temp = temp + 0x4;
+ 280              	 .loc 1 43 0
+ 281 0030 FB7B     	 ldrb r3,[r7,#15]
+ 282 0032 0433     	 adds r3,r3,#4
+ 283 0034 DBB2     	 uxtb r3,r3
+ 284 0036 FB73     	 strb r3,[r7,#15]
+  44:../LCD_I2C.c  **** 	I2C_MASTER_Transmit(&I2C_LCD,true,0x4e,&temp,1,true);
+ 285              	 .loc 1 44 0
+ 286 0038 07F10F04 	 add r4,r7,#15
+ 287 003c 0123     	 movs r3,#1
+ 288 003e 0093     	 str r3,[sp]
+ 289 0040 0123     	 movs r3,#1
+ 290 0042 0193     	 str r3,[sp,#4]
+ 291 0044 2648     	 ldr r0,.L10
+ 292 0046 0121     	 movs r1,#1
+ 293 0048 4E22     	 movs r2,#78
+ 294 004a 2346     	 mov r3,r4
+ 295 004c FFF7FEFF 	 bl I2C_MASTER_Transmit
+  45:../LCD_I2C.c  **** 	temp = temp & 0xFA;
+ 296              	 .loc 1 45 0
+ 297 0050 FB7B     	 ldrb r3,[r7,#15]
+ 298 0052 23F00503 	 bic r3,r3,#5
+ 299 0056 DBB2     	 uxtb r3,r3
+ 300 0058 FB73     	 strb r3,[r7,#15]
+  46:../LCD_I2C.c  **** 	I2C_MASTER_Transmit(&I2C_LCD,true,0x4e,&temp,1,true);
+ 301              	 .loc 1 46 0
+ 302 005a 07F10F04 	 add r4,r7,#15
+ 303 005e 0123     	 movs r3,#1
+ 304 0060 0093     	 str r3,[sp]
+ 305 0062 0123     	 movs r3,#1
+ 306 0064 0193     	 str r3,[sp,#4]
+ 307 0066 1E48     	 ldr r0,.L10
+ 308 0068 0121     	 movs r1,#1
+ 309 006a 4E22     	 movs r2,#78
+ 310 006c 2346     	 mov r3,r4
+ 311 006e FFF7FEFF 	 bl I2C_MASTER_Transmit
+  47:../LCD_I2C.c  **** 
+  48:../LCD_I2C.c  **** 	temp = ((command << 4) & 0xf0) + 8;
+ 312              	 .loc 1 48 0
+ 313 0072 FB79     	 ldrb r3,[r7,#7]
+ 314 0074 1B01     	 lsls r3,r3,#4
+ 315 0076 DBB2     	 uxtb r3,r3
+ 316 0078 0833     	 adds r3,r3,#8
+ 317 007a DBB2     	 uxtb r3,r3
+ 318 007c FB73     	 strb r3,[r7,#15]
+  49:../LCD_I2C.c  **** 	I2C_MASTER_Transmit(&I2C_LCD,true,0x4e,&temp,1,true);
+ 319              	 .loc 1 49 0
+ 320 007e 07F10F04 	 add r4,r7,#15
+ 321 0082 0123     	 movs r3,#1
+ 322 0084 0093     	 str r3,[sp]
+ 323 0086 0123     	 movs r3,#1
+ 324 0088 0193     	 str r3,[sp,#4]
+ 325 008a 1548     	 ldr r0,.L10
+ 326 008c 0121     	 movs r1,#1
+ 327 008e 4E22     	 movs r2,#78
+ 328 0090 2346     	 mov r3,r4
+ 329 0092 FFF7FEFF 	 bl I2C_MASTER_Transmit
+  50:../LCD_I2C.c  **** 
+  51:../LCD_I2C.c  **** 	temp = temp + 0x4;
+ 330              	 .loc 1 51 0
+ 331 0096 FB7B     	 ldrb r3,[r7,#15]
+ 332 0098 0433     	 adds r3,r3,#4
+ 333 009a DBB2     	 uxtb r3,r3
+ 334 009c FB73     	 strb r3,[r7,#15]
+  52:../LCD_I2C.c  **** 	I2C_MASTER_Transmit(&I2C_LCD,true,0x4e,&temp,1,true);
+ 335              	 .loc 1 52 0
+ 336 009e 07F10F04 	 add r4,r7,#15
+ 337 00a2 0123     	 movs r3,#1
+ 338 00a4 0093     	 str r3,[sp]
+ 339 00a6 0123     	 movs r3,#1
+ 340 00a8 0193     	 str r3,[sp,#4]
+ 341 00aa 0D48     	 ldr r0,.L10
+ 342 00ac 0121     	 movs r1,#1
+ 343 00ae 4E22     	 movs r2,#78
+ 344 00b0 2346     	 mov r3,r4
+ 345 00b2 FFF7FEFF 	 bl I2C_MASTER_Transmit
+  53:../LCD_I2C.c  **** 	temp = temp & 0xFA;
+ 346              	 .loc 1 53 0
+ 347 00b6 FB7B     	 ldrb r3,[r7,#15]
+ 348 00b8 23F00503 	 bic r3,r3,#5
+ 349 00bc DBB2     	 uxtb r3,r3
+ 350 00be FB73     	 strb r3,[r7,#15]
+  54:../LCD_I2C.c  **** 	I2C_MASTER_Transmit(&I2C_LCD,true,0x4e,&temp,1,true);
+ 351              	 .loc 1 54 0
+ 352 00c0 07F10F04 	 add r4,r7,#15
+ 353 00c4 0123     	 movs r3,#1
+ 354 00c6 0093     	 str r3,[sp]
+ 355 00c8 0123     	 movs r3,#1
+ 356 00ca 0193     	 str r3,[sp,#4]
+ 357 00cc 0448     	 ldr r0,.L10
+ 358 00ce 0121     	 movs r1,#1
+ 359 00d0 4E22     	 movs r2,#78
+ 360 00d2 2346     	 mov r3,r4
+ 361 00d4 FFF7FEFF 	 bl I2C_MASTER_Transmit
+  55:../LCD_I2C.c  **** 
+  56:../LCD_I2C.c  **** }
+ 362              	 .loc 1 56 0
+ 363 00d8 1437     	 adds r7,r7,#20
+ 364              	.LCFI14:
+ 365              	 .cfi_def_cfa_offset 12
+ 366 00da BD46     	 mov sp,r7
+ 367              	.LCFI15:
+ 368              	 .cfi_def_cfa_register 13
+ 369              	 
+ 370 00dc 90BD     	 pop {r4,r7,pc}
+ 371              	.L11:
+ 372 00de 00BF     	 .align 2
+ 373              	.L10:
+ 374 00e0 00000000 	 .word I2C_LCD
+ 375              	 .cfi_endproc
+ 376              	.LFE435:
+ 378              	 .section .text.LCDCursorXY,"ax",%progbits
+ 379              	 .align 2
+ 380              	 .global LCDCursorXY
+ 381              	 .thumb
+ 382              	 .thumb_func
+ 384              	LCDCursorXY:
+ 385              	.LFB436:
+  57:../LCD_I2C.c  **** 
+  58:../LCD_I2C.c  **** void LCDCursorXY(uint8_t x, uint8_t y)
+  59:../LCD_I2C.c  **** {
+ 386              	 .loc 1 59 0
+ 387              	 .cfi_startproc
+ 388              	 
+ 389              	 
+ 390 0000 80B5     	 push {r7,lr}
+ 391              	.LCFI16:
+ 392              	 .cfi_def_cfa_offset 8
+ 393              	 .cfi_offset 7,-8
+ 394              	 .cfi_offset 14,-4
+ 395 0002 84B0     	 sub sp,sp,#16
+ 396              	.LCFI17:
+ 397              	 .cfi_def_cfa_offset 24
+ 398 0004 00AF     	 add r7,sp,#0
+ 399              	.LCFI18:
+ 400              	 .cfi_def_cfa_register 7
+ 401 0006 0346     	 mov r3,r0
+ 402 0008 0A46     	 mov r2,r1
+ 403 000a FB71     	 strb r3,[r7,#7]
+ 404 000c 1346     	 mov r3,r2
+ 405 000e BB71     	 strb r3,[r7,#6]
+  60:../LCD_I2C.c  **** 	uint8_t address =0;
+ 406              	 .loc 1 60 0
+ 407 0010 0023     	 movs r3,#0
+ 408 0012 FB73     	 strb r3,[r7,#15]
+  61:../LCD_I2C.c  ****     switch (x) {
+ 409              	 .loc 1 61 0
+ 410 0014 FB79     	 ldrb r3,[r7,#7]
+ 411 0016 032B     	 cmp r3,#3
+ 412 0018 26D8     	 bhi .L13
+ 413 001a 01A2     	 adr r2,.L15
+ 414 001c 52F823F0 	 ldr pc,[r2,r3,lsl#2]
+ 415              	 .p2align 2
+ 416              	.L15:
+ 417 0020 31000000 	 .word .L14+1
+ 418 0024 3F000000 	 .word .L16+1
+ 419 0028 4D000000 	 .word .L17+1
+ 420 002c 5B000000 	 .word .L18+1
+ 421              	 .p2align 1
+ 422              	.L14:
+  62:../LCD_I2C.c  ****         case (0) : address = 0x80 + (y & 0x0f);
+ 423              	 .loc 1 62 0
+ 424 0030 BB79     	 ldrb r3,[r7,#6]
+ 425 0032 03F00F03 	 and r3,r3,#15
+ 426 0036 DBB2     	 uxtb r3,r3
+ 427 0038 803B     	 subs r3,r3,#128
+ 428 003a FB73     	 strb r3,[r7,#15]
+  63:../LCD_I2C.c  ****         break;
+ 429              	 .loc 1 63 0
+ 430 003c 14E0     	 b .L13
+ 431              	.L16:
+  64:../LCD_I2C.c  ****         case (1) : address = 0xc0 + (y & 0x0f);
+ 432              	 .loc 1 64 0
+ 433 003e BB79     	 ldrb r3,[r7,#6]
+ 434 0040 03F00F03 	 and r3,r3,#15
+ 435 0044 DBB2     	 uxtb r3,r3
+ 436 0046 403B     	 subs r3,r3,#64
+ 437 0048 FB73     	 strb r3,[r7,#15]
+  65:../LCD_I2C.c  ****         break;
+ 438              	 .loc 1 65 0
+ 439 004a 0DE0     	 b .L13
+ 440              	.L17:
+  66:../LCD_I2C.c  ****         case (2) : address = 0x94 + (y & 0x0f);
+ 441              	 .loc 1 66 0
+ 442 004c BB79     	 ldrb r3,[r7,#6]
+ 443 004e 03F00F03 	 and r3,r3,#15
+ 444 0052 DBB2     	 uxtb r3,r3
+ 445 0054 6C3B     	 subs r3,r3,#108
+ 446 0056 FB73     	 strb r3,[r7,#15]
+  67:../LCD_I2C.c  ****         break;
+ 447              	 .loc 1 67 0
+ 448 0058 06E0     	 b .L13
+ 449              	.L18:
+  68:../LCD_I2C.c  ****         case (3) : address = 0xD4 + (y & 0x0f);
+ 450              	 .loc 1 68 0
+ 451 005a BB79     	 ldrb r3,[r7,#6]
+ 452 005c 03F00F03 	 and r3,r3,#15
+ 453 0060 DBB2     	 uxtb r3,r3
+ 454 0062 2C3B     	 subs r3,r3,#44
+ 455 0064 FB73     	 strb r3,[r7,#15]
+  69:../LCD_I2C.c  ****         break;
+ 456              	 .loc 1 69 0
+ 457 0066 00BF     	 nop
+ 458              	.L13:
+  70:../LCD_I2C.c  ****     }
+  71:../LCD_I2C.c  **** 
+  72:../LCD_I2C.c  ****     LCDWriteCommand(address);
+ 459              	 .loc 1 72 0
+ 460 0068 FB7B     	 ldrb r3,[r7,#15]
+ 461 006a 1846     	 mov r0,r3
+ 462 006c FFF7FEFF 	 bl LCDWriteCommand
+  73:../LCD_I2C.c  **** 
+  74:../LCD_I2C.c  **** }
+ 463              	 .loc 1 74 0
+ 464 0070 1037     	 adds r7,r7,#16
+ 465              	.LCFI19:
+ 466              	 .cfi_def_cfa_offset 8
+ 467 0072 BD46     	 mov sp,r7
+ 468              	.LCFI20:
+ 469              	 .cfi_def_cfa_register 13
+ 470              	 
+ 471 0074 80BD     	 pop {r7,pc}
+ 472              	 .cfi_endproc
+ 473              	.LFE436:
+ 475 0076 00BF     	 .section .text.LCDWriteString,"ax",%progbits
+ 476              	 .align 2
+ 477              	 .global LCDWriteString
+ 478              	 .thumb
+ 479              	 .thumb_func
+ 481              	LCDWriteString:
+ 482              	.LFB437:
+  75:../LCD_I2C.c  **** 
+  76:../LCD_I2C.c  **** void LCDWriteString(char *s)
+  77:../LCD_I2C.c  **** {
+ 483              	 .loc 1 77 0
+ 484              	 .cfi_startproc
+ 485              	 
+ 486              	 
+ 487 0000 80B5     	 push {r7,lr}
+ 488              	.LCFI21:
+ 489              	 .cfi_def_cfa_offset 8
+ 490              	 .cfi_offset 7,-8
+ 491              	 .cfi_offset 14,-4
+ 492 0002 82B0     	 sub sp,sp,#8
+ 493              	.LCFI22:
+ 494              	 .cfi_def_cfa_offset 16
+ 495 0004 00AF     	 add r7,sp,#0
+ 496              	.LCFI23:
+ 497              	 .cfi_def_cfa_register 7
+ 498 0006 7860     	 str r0,[r7,#4]
+  78:../LCD_I2C.c  **** 	while(*s)
+ 499              	 .loc 1 78 0
+ 500 0008 07E0     	 b .L20
+ 501              	.L21:
+  79:../LCD_I2C.c  **** 	{
+  80:../LCD_I2C.c  **** 		LCDWriteData(*s);
+ 502              	 .loc 1 80 0
+ 503 000a 7B68     	 ldr r3,[r7,#4]
+ 504 000c 1B78     	 ldrb r3,[r3]
+ 505 000e 1846     	 mov r0,r3
+ 506 0010 FFF7FEFF 	 bl LCDWriteData
+  81:../LCD_I2C.c  **** 		s++;
+ 507              	 .loc 1 81 0
+ 508 0014 7B68     	 ldr r3,[r7,#4]
+ 509 0016 0133     	 adds r3,r3,#1
+ 510 0018 7B60     	 str r3,[r7,#4]
+ 511              	.L20:
+  78:../LCD_I2C.c  **** 	while(*s)
+ 512              	 .loc 1 78 0
+ 513 001a 7B68     	 ldr r3,[r7,#4]
+ 514 001c 1B78     	 ldrb r3,[r3]
+ 515 001e 002B     	 cmp r3,#0
+ 516 0020 F3D1     	 bne .L21
+  82:../LCD_I2C.c  **** 	}
+  83:../LCD_I2C.c  **** }
+ 517              	 .loc 1 83 0
+ 518 0022 0837     	 adds r7,r7,#8
+ 519              	.LCFI24:
+ 520              	 .cfi_def_cfa_offset 8
+ 521 0024 BD46     	 mov sp,r7
+ 522              	.LCFI25:
+ 523              	 .cfi_def_cfa_register 13
+ 524              	 
+ 525 0026 80BD     	 pop {r7,pc}
+ 526              	 .cfi_endproc
+ 527              	.LFE437:
+ 529              	 .section .text.LCDInit,"ax",%progbits
+ 530              	 .align 2
+ 531              	 .global LCDInit
+ 532              	 .thumb
+ 533              	 .thumb_func
+ 535              	LCDInit:
+ 536              	.LFB438:
+  84:../LCD_I2C.c  **** 
+  85:../LCD_I2C.c  **** 
+  86:../LCD_I2C.c  **** void LCDInit(void)
+  87:../LCD_I2C.c  **** {
+ 537              	 .loc 1 87 0
+ 538              	 .cfi_startproc
+ 539              	 
+ 540              	 
+ 541 0000 80B5     	 push {r7,lr}
+ 542              	.LCFI26:
+ 543              	 .cfi_def_cfa_offset 8
+ 544              	 .cfi_offset 7,-8
+ 545              	 .cfi_offset 14,-4
+ 546 0002 00AF     	 add r7,sp,#0
+ 547              	.LCFI27:
+ 548              	 .cfi_def_cfa_register 7
+  88:../LCD_I2C.c  **** 	LCDWriteCommand(0x33);
+ 549              	 .loc 1 88 0
+ 550 0004 3320     	 movs r0,#51
+ 551 0006 FFF7FEFF 	 bl LCDWriteCommand
+  89:../LCD_I2C.c  **** 	LCDWriteCommand(0x32);
+ 552              	 .loc 1 89 0
+ 553 000a 3220     	 movs r0,#50
+ 554 000c FFF7FEFF 	 bl LCDWriteCommand
+  90:../LCD_I2C.c  **** 	LCDWriteCommand(0x28); // 4 bit mode
+ 555              	 .loc 1 90 0
+ 556 0010 2820     	 movs r0,#40
+ 557 0012 FFF7FEFF 	 bl LCDWriteCommand
+  91:../LCD_I2C.c  **** 	LCDWriteCommand(0x01); // clear the screen
+ 558              	 .loc 1 91 0
+ 559 0016 0120     	 movs r0,#1
+ 560 0018 FFF7FEFF 	 bl LCDWriteCommand
+  92:../LCD_I2C.c  **** 	LCDWriteCommand(0x0F); // display on cursor on, cursor blink
+ 561              	 .loc 1 92 0
+ 562 001c 0F20     	 movs r0,#15
+ 563 001e FFF7FEFF 	 bl LCDWriteCommand
+  93:../LCD_I2C.c  **** 	LCDWriteCommand(0x06); // increment cursor
+ 564              	 .loc 1 93 0
+ 565 0022 0620     	 movs r0,#6
+ 566 0024 FFF7FEFF 	 bl LCDWriteCommand
+  94:../LCD_I2C.c  **** 	LCDWriteCommand(0x80); // row 1 column 1
+ 567              	 .loc 1 94 0
+ 568 0028 8020     	 movs r0,#128
+ 569 002a FFF7FEFF 	 bl LCDWriteCommand
+  95:../LCD_I2C.c  **** }
+ 570              	 .loc 1 95 0
+ 571 002e 80BD     	 pop {r7,pc}
+ 572              	 .cfi_endproc
+ 573              	.LFE438:
+ 575              	 .text
+ 576              	.Letext0:
+ 577              	 .file 2 "c:\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 578              	 .file 3 "c:\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\stdint.h"
+ 579              	 .file 4 "C:/Users/emob/Desktop/smartlogger/design/firmware/xmc4500/smart_logger/smart_logger/Libraries/CMSIS/Infineon/XMC4500_series/Include/XMC4500.h"
+ 580              	 .file 5 "C:/Users/emob/Desktop/smartlogger/design/firmware/xmc4500/smart_logger/smart_logger/Libraries/XMCLib/inc/xmc_usic.h"
+ 581              	 .file 6 "C:/Users/emob/Desktop/smartlogger/design/firmware/xmc4500/smart_logger/smart_logger/Libraries/XMCLib/inc/xmc_i2c.h"
+ 582              	 .file 7 "C:/Users/emob/Desktop/smartlogger/design/firmware/xmc4500/smart_logger/smart_logger/Dave/Generated/I2C_MASTER/i2c_master.h"
+ 583              	 .file 8 "C:/Users/emob/Desktop/smartlogger/design/firmware/xmc4500/smart_logger/smart_logger/Libraries/CMSIS/Include/core_cm4.h"
+ 584              	 .file 9 "C:/Users/emob/Desktop/smartlogger/design/firmware/xmc4500/smart_logger/smart_logger/Libraries/CMSIS/Infineon/XMC4500_series/Include/system_XMC4500.h"
+ 585              	 .file 10 "C:/Users/emob/Desktop/smartlogger/design/firmware/xmc4500/smart_logger/smart_logger/Dave/Generated/I2C_MASTER/i2c_master_extern.h"
+DEFINED SYMBOLS
+                            *ABS*:00000000 LCD_I2C.c
+    {standard input}:20     .text.delay:00000000 $t
+    {standard input}:25     .text.delay:00000000 delay
+    {standard input}:95     .text.LCDWriteData:00000000 $t
+    {standard input}:100    .text.LCDWriteData:00000000 LCDWriteData
+    {standard input}:232    .text.LCDWriteData:000000e0 $d
+    {standard input}:237    .text.LCDWriteCommand:00000000 $t
+    {standard input}:242    .text.LCDWriteCommand:00000000 LCDWriteCommand
+    {standard input}:374    .text.LCDWriteCommand:000000e0 $d
+    {standard input}:379    .text.LCDCursorXY:00000000 $t
+    {standard input}:384    .text.LCDCursorXY:00000000 LCDCursorXY
+    {standard input}:417    .text.LCDCursorXY:00000020 $d
+    {standard input}:421    .text.LCDCursorXY:00000030 $t
+    {standard input}:476    .text.LCDWriteString:00000000 $t
+    {standard input}:481    .text.LCDWriteString:00000000 LCDWriteString
+    {standard input}:530    .text.LCDInit:00000000 $t
+    {standard input}:535    .text.LCDInit:00000000 LCDInit
+                     .debug_frame:00000010 $d
+
+UNDEFINED SYMBOLS
+I2C_MASTER_Transmit
+I2C_LCD

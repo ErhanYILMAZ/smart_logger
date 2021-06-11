@@ -1,0 +1,407 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Project MotherSystem_Version="" Name="smart_logger" Path="C:\Users\erhan\Desktop\smartlogger\design\firmware\xmc4500\smart_logger\smart_logger">
+    <COMPILER>
+        <Name>ARM_GCC_HOME</Name>
+        <Version/>
+        <Memory_Model/>
+    </COMPILER>
+    <DEVICE>
+        <Sales_Code>XMC4500-F100x1024</Sales_Code>
+        <Description/>
+    </DEVICE>
+    <Generated_Files>
+        <Source_Files>
+            <Source_File>
+                <File_Name>can_node.c</File_Name>
+                <Path>\Dave\Generated\CAN_NODE\can_node.c</Path>
+                <Type>C File</Type>
+            </Source_File>
+            <Source_File>
+                <File_Name>can_node_conf.c</File_Name>
+                <Path>\Dave\Generated\CAN_NODE\can_node_conf.c</Path>
+                <Type>C File</Type>
+            </Source_File>
+            <Source_File>
+                <File_Name>clock_xmc4.c</File_Name>
+                <Path>\Dave\Generated\CLOCK_XMC4\clock_xmc4.c</Path>
+                <Type>C File</Type>
+            </Source_File>
+            <Source_File>
+                <File_Name>clock_xmc4_conf.c</File_Name>
+                <Path>\Dave\Generated\CLOCK_XMC4\clock_xmc4_conf.c</Path>
+                <Type>C File</Type>
+            </Source_File>
+            <Source_File>
+                <File_Name>cpu_ctrl_xmc4.c</File_Name>
+                <Path>\Dave\Generated\CPU_CTRL_XMC4\cpu_ctrl_xmc4.c</Path>
+                <Type>C File</Type>
+            </Source_File>
+            <Source_File>
+                <File_Name>cpu_ctrl_xmc4_conf.c</File_Name>
+                <Path>\Dave\Generated\CPU_CTRL_XMC4\cpu_ctrl_xmc4_conf.c</Path>
+                <Type>C File</Type>
+            </Source_File>
+            <Source_File>
+                <File_Name>DAVE.c</File_Name>
+                <Path>\Dave\Generated\DAVE.c</Path>
+                <Type>C File</Type>
+            </Source_File>
+            <Source_File>
+                <File_Name>fatfs.c</File_Name>
+                <Path>\Dave\Generated\FATFS\fatfs.c</Path>
+                <Type>C File</Type>
+            </Source_File>
+            <Source_File>
+                <File_Name>fatfs_conf.c</File_Name>
+                <Path>\Dave\Generated\FATFS\fatfs_conf.c</Path>
+                <Type>C File</Type>
+            </Source_File>
+            <Source_File>
+                <File_Name>ff.c</File_Name>
+                <Path>\Dave\Generated\FATFS\ff_Src\ff.c</Path>
+                <Type>C File</Type>
+            </Source_File>
+            <Source_File>
+                <File_Name>ffsystem.c</File_Name>
+                <Path>\Dave\Generated\FATFS\ff_Src\ffsystem.c</Path>
+                <Type>C File</Type>
+            </Source_File>
+            <Source_File>
+                <File_Name>ffunicode.c</File_Name>
+                <Path>\Dave\Generated\FATFS\ff_Src\ffunicode.c</Path>
+                <Type>C File</Type>
+            </Source_File>
+            <Source_File>
+                <File_Name>syscall.c</File_Name>
+                <Path>\Dave\Generated\FATFS\ff_Src\syscall.c</Path>
+                <Type>C File</Type>
+            </Source_File>
+            <Source_File>
+                <File_Name>sltha.c</File_Name>
+                <Path>\Dave\Generated\FATFS\sltha.c</Path>
+                <Type>C File</Type>
+            </Source_File>
+            <Source_File>
+                <File_Name>global_can.c</File_Name>
+                <Path>\Dave\Generated\GLOBAL_CAN\global_can.c</Path>
+                <Type>C File</Type>
+            </Source_File>
+            <Source_File>
+                <File_Name>global_can_conf.c</File_Name>
+                <Path>\Dave\Generated\GLOBAL_CAN\global_can_conf.c</Path>
+                <Type>C File</Type>
+            </Source_File>
+            <Source_File>
+                <File_Name>global_ccu4.c</File_Name>
+                <Path>\Dave\Generated\GLOBAL_CCU4\global_ccu4.c</Path>
+                <Type>C File</Type>
+            </Source_File>
+            <Source_File>
+                <File_Name>global_ccu4_conf.c</File_Name>
+                <Path>\Dave\Generated\GLOBAL_CCU4\global_ccu4_conf.c</Path>
+                <Type>C File</Type>
+            </Source_File>
+            <Source_File>
+                <File_Name>i2c_master.c</File_Name>
+                <Path>\Dave\Generated\I2C_MASTER\i2c_master.c</Path>
+                <Type>C File</Type>
+            </Source_File>
+            <Source_File>
+                <File_Name>i2c_master_conf.c</File_Name>
+                <Path>\Dave\Generated\I2C_MASTER\i2c_master_conf.c</Path>
+                <Type>C File</Type>
+            </Source_File>
+            <Source_File>
+                <File_Name>interrupt.c</File_Name>
+                <Path>\Dave\Generated\INTERRUPT\interrupt.c</Path>
+                <Type>C File</Type>
+            </Source_File>
+            <Source_File>
+                <File_Name>interrupt_conf.c</File_Name>
+                <Path>\Dave\Generated\INTERRUPT\interrupt_conf.c</Path>
+                <Type>C File</Type>
+            </Source_File>
+            <Source_File>
+                <File_Name>rtc.c</File_Name>
+                <Path>\Dave\Generated\RTC\rtc.c</Path>
+                <Type>C File</Type>
+            </Source_File>
+            <Source_File>
+                <File_Name>rtc_conf.c</File_Name>
+                <Path>\Dave\Generated\RTC\rtc_conf.c</Path>
+                <Type>C File</Type>
+            </Source_File>
+            <Source_File>
+                <File_Name>sdmmc_block.c</File_Name>
+                <Path>\Dave\Generated\SDMMC_BLOCK\sdmmc_block.c</Path>
+                <Type>C File</Type>
+            </Source_File>
+            <Source_File>
+                <File_Name>sdmmc_block_conf.c</File_Name>
+                <Path>\Dave\Generated\SDMMC_BLOCK\sdmmc_block_conf.c</Path>
+                <Type>C File</Type>
+            </Source_File>
+            <Source_File>
+                <File_Name>sdmmc_block_private_sd.c</File_Name>
+                <Path>\Dave\Generated\SDMMC_BLOCK\sdmmc_block_private_sd.c</Path>
+                <Type>C File</Type>
+            </Source_File>
+            <Source_File>
+                <File_Name>systimer.c</File_Name>
+                <Path>\Dave\Generated\SYSTIMER\systimer.c</Path>
+                <Type>C File</Type>
+            </Source_File>
+            <Source_File>
+                <File_Name>systimer_conf.c</File_Name>
+                <Path>\Dave\Generated\SYSTIMER\systimer_conf.c</Path>
+                <Type>C File</Type>
+            </Source_File>
+            <Source_File>
+                <File_Name>timer.c</File_Name>
+                <Path>\Dave\Generated\TIMER\timer.c</Path>
+                <Type>C File</Type>
+            </Source_File>
+            <Source_File>
+                <File_Name>timer_conf.c</File_Name>
+                <Path>\Dave\Generated\TIMER\timer_conf.c</Path>
+                <Type>C File</Type>
+            </Source_File>
+        </Source_Files>
+        <Header_Files>
+            <Header_File>
+                <File_Name>can_node.h</File_Name>
+                <Path>\Dave\Generated\CAN_NODE\can_node.h</Path>
+                <Type>H File</Type>
+            </Header_File>
+            <Header_File>
+                <File_Name>can_node_conf.h</File_Name>
+                <Path>\Dave\Generated\CAN_NODE\can_node_conf.h</Path>
+                <Type>H File</Type>
+            </Header_File>
+            <Header_File>
+                <File_Name>can_node_extern.h</File_Name>
+                <Path>\Dave\Generated\CAN_NODE\can_node_extern.h</Path>
+                <Type>H File</Type>
+            </Header_File>
+            <Header_File>
+                <File_Name>clock_xmc4.h</File_Name>
+                <Path>\Dave\Generated\CLOCK_XMC4\clock_xmc4.h</Path>
+                <Type>H File</Type>
+            </Header_File>
+            <Header_File>
+                <File_Name>clock_xmc4_conf.h</File_Name>
+                <Path>\Dave\Generated\CLOCK_XMC4\clock_xmc4_conf.h</Path>
+                <Type>H File</Type>
+            </Header_File>
+            <Header_File>
+                <File_Name>clock_xmc4_extern.h</File_Name>
+                <Path>\Dave\Generated\CLOCK_XMC4\clock_xmc4_extern.h</Path>
+                <Type>H File</Type>
+            </Header_File>
+            <Header_File>
+                <File_Name>cpu_ctrl_xmc4.h</File_Name>
+                <Path>\Dave\Generated\CPU_CTRL_XMC4\cpu_ctrl_xmc4.h</Path>
+                <Type>H File</Type>
+            </Header_File>
+            <Header_File>
+                <File_Name>cpu_ctrl_xmc4_conf.h</File_Name>
+                <Path>\Dave\Generated\CPU_CTRL_XMC4\cpu_ctrl_xmc4_conf.h</Path>
+                <Type>H File</Type>
+            </Header_File>
+            <Header_File>
+                <File_Name>cpu_ctrl_xmc4_extern.h</File_Name>
+                <Path>\Dave\Generated\CPU_CTRL_XMC4\cpu_ctrl_xmc4_extern.h</Path>
+                <Type>H File</Type>
+            </Header_File>
+            <Header_File>
+                <File_Name>DAVE.h</File_Name>
+                <Path>\Dave\Generated\DAVE.h</Path>
+                <Type>H File</Type>
+            </Header_File>
+            <Header_File>
+                <File_Name>DAVE_Common.h</File_Name>
+                <Path>\Dave\Generated\DAVE_Common.h</Path>
+                <Type>H File</Type>
+            </Header_File>
+            <Header_File>
+                <File_Name>fatfs.h</File_Name>
+                <Path>\Dave\Generated\FATFS\fatfs.h</Path>
+                <Type>H File</Type>
+            </Header_File>
+            <Header_File>
+                <File_Name>fatfs_conf.h</File_Name>
+                <Path>\Dave\Generated\FATFS\fatfs_conf.h</Path>
+                <Type>H File</Type>
+            </Header_File>
+            <Header_File>
+                <File_Name>fatfs_extern.h</File_Name>
+                <Path>\Dave\Generated\FATFS\fatfs_extern.h</Path>
+                <Type>H File</Type>
+            </Header_File>
+            <Header_File>
+                <File_Name>diskio.h</File_Name>
+                <Path>\Dave\Generated\FATFS\ff_Src\diskio.h</Path>
+                <Type>H File</Type>
+            </Header_File>
+            <Header_File>
+                <File_Name>ff.h</File_Name>
+                <Path>\Dave\Generated\FATFS\ff_Src\ff.h</Path>
+                <Type>H File</Type>
+            </Header_File>
+            <Header_File>
+                <File_Name>ffconf.h</File_Name>
+                <Path>\Dave\Generated\FATFS\ff_Src\ffconf.h</Path>
+                <Type>H File</Type>
+            </Header_File>
+            <Header_File>
+                <File_Name>integer.h</File_Name>
+                <Path>\Dave\Generated\FATFS\ff_Src\integer.h</Path>
+                <Type>H File</Type>
+            </Header_File>
+            <Header_File>
+                <File_Name>sltha.h</File_Name>
+                <Path>\Dave\Generated\FATFS\sltha.h</Path>
+                <Type>H File</Type>
+            </Header_File>
+            <Header_File>
+                <File_Name>global_can.h</File_Name>
+                <Path>\Dave\Generated\GLOBAL_CAN\global_can.h</Path>
+                <Type>H File</Type>
+            </Header_File>
+            <Header_File>
+                <File_Name>global_can_conf.h</File_Name>
+                <Path>\Dave\Generated\GLOBAL_CAN\global_can_conf.h</Path>
+                <Type>H File</Type>
+            </Header_File>
+            <Header_File>
+                <File_Name>global_can_extern.h</File_Name>
+                <Path>\Dave\Generated\GLOBAL_CAN\global_can_extern.h</Path>
+                <Type>H File</Type>
+            </Header_File>
+            <Header_File>
+                <File_Name>global_ccu4.h</File_Name>
+                <Path>\Dave\Generated\GLOBAL_CCU4\global_ccu4.h</Path>
+                <Type>H File</Type>
+            </Header_File>
+            <Header_File>
+                <File_Name>global_ccu4_conf.h</File_Name>
+                <Path>\Dave\Generated\GLOBAL_CCU4\global_ccu4_conf.h</Path>
+                <Type>H File</Type>
+            </Header_File>
+            <Header_File>
+                <File_Name>global_ccu4_extern.h</File_Name>
+                <Path>\Dave\Generated\GLOBAL_CCU4\global_ccu4_extern.h</Path>
+                <Type>H File</Type>
+            </Header_File>
+            <Header_File>
+                <File_Name>i2c_master.h</File_Name>
+                <Path>\Dave\Generated\I2C_MASTER\i2c_master.h</Path>
+                <Type>H File</Type>
+            </Header_File>
+            <Header_File>
+                <File_Name>i2c_master_conf.h</File_Name>
+                <Path>\Dave\Generated\I2C_MASTER\i2c_master_conf.h</Path>
+                <Type>H File</Type>
+            </Header_File>
+            <Header_File>
+                <File_Name>i2c_master_extern.h</File_Name>
+                <Path>\Dave\Generated\I2C_MASTER\i2c_master_extern.h</Path>
+                <Type>H File</Type>
+            </Header_File>
+            <Header_File>
+                <File_Name>interrupt.h</File_Name>
+                <Path>\Dave\Generated\INTERRUPT\interrupt.h</Path>
+                <Type>H File</Type>
+            </Header_File>
+            <Header_File>
+                <File_Name>interrupt_conf.h</File_Name>
+                <Path>\Dave\Generated\INTERRUPT\interrupt_conf.h</Path>
+                <Type>H File</Type>
+            </Header_File>
+            <Header_File>
+                <File_Name>interrupt_extern.h</File_Name>
+                <Path>\Dave\Generated\INTERRUPT\interrupt_extern.h</Path>
+                <Type>H File</Type>
+            </Header_File>
+            <Header_File>
+                <File_Name>rtc.h</File_Name>
+                <Path>\Dave\Generated\RTC\rtc.h</Path>
+                <Type>H File</Type>
+            </Header_File>
+            <Header_File>
+                <File_Name>rtc_conf.h</File_Name>
+                <Path>\Dave\Generated\RTC\rtc_conf.h</Path>
+                <Type>H File</Type>
+            </Header_File>
+            <Header_File>
+                <File_Name>rtc_extern.h</File_Name>
+                <Path>\Dave\Generated\RTC\rtc_extern.h</Path>
+                <Type>H File</Type>
+            </Header_File>
+            <Header_File>
+                <File_Name>sdmmc_block.h</File_Name>
+                <Path>\Dave\Generated\SDMMC_BLOCK\sdmmc_block.h</Path>
+                <Type>H File</Type>
+            </Header_File>
+            <Header_File>
+                <File_Name>sdmmc_block_conf.h</File_Name>
+                <Path>\Dave\Generated\SDMMC_BLOCK\sdmmc_block_conf.h</Path>
+                <Type>H File</Type>
+            </Header_File>
+            <Header_File>
+                <File_Name>sdmmc_block_extern.h</File_Name>
+                <Path>\Dave\Generated\SDMMC_BLOCK\sdmmc_block_extern.h</Path>
+                <Type>H File</Type>
+            </Header_File>
+            <Header_File>
+                <File_Name>sdmmc_block_private_sd.h</File_Name>
+                <Path>\Dave\Generated\SDMMC_BLOCK\sdmmc_block_private_sd.h</Path>
+                <Type>H File</Type>
+            </Header_File>
+            <Header_File>
+                <File_Name>systimer.h</File_Name>
+                <Path>\Dave\Generated\SYSTIMER\systimer.h</Path>
+                <Type>H File</Type>
+            </Header_File>
+            <Header_File>
+                <File_Name>systimer_conf.h</File_Name>
+                <Path>\Dave\Generated\SYSTIMER\systimer_conf.h</Path>
+                <Type>H File</Type>
+            </Header_File>
+            <Header_File>
+                <File_Name>systimer_extern.h</File_Name>
+                <Path>\Dave\Generated\SYSTIMER\systimer_extern.h</Path>
+                <Type>H File</Type>
+            </Header_File>
+            <Header_File>
+                <File_Name>timer.h</File_Name>
+                <Path>\Dave\Generated\TIMER\timer.h</Path>
+                <Type>H File</Type>
+            </Header_File>
+            <Header_File>
+                <File_Name>timer_conf.h</File_Name>
+                <Path>\Dave\Generated\TIMER\timer_conf.h</Path>
+                <Type>H File</Type>
+            </Header_File>
+            <Header_File>
+                <File_Name>timer_extern.h</File_Name>
+                <Path>\Dave\Generated\TIMER\timer_extern.h</Path>
+                <Type>H File</Type>
+            </Header_File>
+        </Header_Files>
+        <Library_Files/>
+        <Assembly_Files/>
+    </Generated_Files>
+    <Include_Path>
+        <Path>\Libraries\XMCLib\inc</Path>
+        <Path>\Libraries\CMSIS\Include</Path>
+        <Path>\Libraries\CMSIS\Infineon\XMC4500_series\Include</Path>
+        <Path/>
+        <Path>\Dave\Generated</Path>
+        <Path>\Libraries</Path>
+    </Include_Path>
+    <Preprocessor_Symbols>
+        <Assembler_Symbol>XMC4500_F100x1024=</Assembler_Symbol>
+        <Compiler_Symbol>XMC4500_F100x1024=</Compiler_Symbol>
+    </Preprocessor_Symbols>
+</Project>

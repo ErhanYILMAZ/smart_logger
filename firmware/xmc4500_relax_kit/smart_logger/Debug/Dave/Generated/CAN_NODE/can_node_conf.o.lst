@@ -1,0 +1,251 @@
+   1              	 .syntax unified
+   2              	 .cpu cortex-m4
+   3              	 .eabi_attribute 27,3
+   4              	 .fpu fpv4-sp-d16
+   5              	 .eabi_attribute 20,1
+   6              	 .eabi_attribute 21,1
+   7              	 .eabi_attribute 23,3
+   8              	 .eabi_attribute 24,1
+   9              	 .eabi_attribute 25,1
+  10              	 .eabi_attribute 26,1
+  11              	 .eabi_attribute 30,6
+  12              	 .eabi_attribute 34,1
+  13              	 .eabi_attribute 18,4
+  14              	 .thumb
+  15              	 .file "can_node_conf.c"
+  16              	 .text
+  17              	.Ltext0:
+  18              	 .cfi_sections .debug_frame
+  19              	 .global CAN_OBDII_gpio_out
+  20              	 .section .rodata.CAN_OBDII_gpio_out,"a",%progbits
+  21              	 .align 2
+  24              	CAN_OBDII_gpio_out:
+  25 0000 00810248 	 .word 1208123648
+  26 0004 05       	 .byte 5
+  27 0005 000000   	 .space 3
+  28              	 .global CAN_OBDII_gpio_out_config
+  29              	 .section .rodata.CAN_OBDII_gpio_out_config,"a",%progbits
+  30              	 .align 2
+  33              	CAN_OBDII_gpio_out_config:
+  34 0000 88       	 .byte -120
+  35 0001 000000   	 .space 3
+  36 0004 01000000 	 .word 1
+  37 0008 02       	 .byte 2
+  38 0009 000000   	 .space 3
+  39              	 .global CAN_OBDII_gpio_in
+  40              	 .section .rodata.CAN_OBDII_gpio_in,"a",%progbits
+  41              	 .align 2
+  44              	CAN_OBDII_gpio_in:
+  45 0000 00810248 	 .word 1208123648
+  46 0004 04       	 .byte 4
+  47 0005 000000   	 .space 3
+  48              	 .global CAN_OBDII_gpio_in_config
+  49              	 .section .rodata.CAN_OBDII_gpio_in_config,"a",%progbits
+  50              	 .align 2
+  53              	CAN_OBDII_gpio_in_config:
+  54 0000 00000000 	 .space 12
+  54      00000000 
+  54      00000000 
+  55              	 .global CAN_OBDII_BitTimeConfig
+  56              	 .section .data.CAN_OBDII_BitTimeConfig,"aw",%progbits
+  57              	 .align 2
+  60              	CAN_OBDII_BitTimeConfig:
+  61 0000 000E2707 	 .word 120000000
+  62 0004 20A10700 	 .word 500000
+  63 0008 401F     	 .short 8000
+  64 000a 0100     	 .short 1
+  65              	 .global CAN_OBDII_sr
+  66              	 .section .rodata.CAN_OBDII_sr,"a",%progbits
+  67              	 .align 2
+  70              	CAN_OBDII_sr:
+  71 0000 00000000 	 .space 4
+  72              	 .global CAN_OBDII_LMO_01
+  73              	 .section .data.CAN_OBDII_LMO_01,"aw",%progbits
+  74              	 .align 3
+  77              	CAN_OBDII_LMO_01:
+  78 0000 20540148 	 .word 1208046624
+  79 0004 E7       	 .byte 231
+  80 0005 07       	 .byte 7
+  81 0006 00       	 .byte 0
+  82 0007 80       	 .byte 128
+  83 0008 FF       	 .byte 255
+  84 0009 07       	 .byte 7
+  85 000a 00       	 .byte 0
+  86 000b 20       	 .byte 32
+  87 000c 08       	 .byte 8
+  88 000d 000000   	 .space 3
+  89 0010 00000000 	 .word 0
+  90 0014 00000000 	 .word 0
+  91 0018 01       	 .byte 1
+  92 0019 00000000 	 .space 7
+  92      000000
+  93              	 .global CAN_OBDII_LMO_01_Config
+  94              	 .section .rodata.CAN_OBDII_LMO_01_Config,"a",%progbits
+  95              	 .align 2
+  98              	CAN_OBDII_LMO_01_Config:
+  99 0000 00000000 	 .word CAN_OBDII_LMO_01
+ 100 0004 21       	 .byte 33
+ 101 0005 00       	 .byte 0
+ 102 0006 00       	 .byte 0
+ 103 0007 00       	 .byte 0
+ 104 0008 00       	 .byte 0
+ 105 0009 000000   	 .space 3
+ 106              	 .global CAN_OBDII_LMO_02
+ 107              	 .section .data.CAN_OBDII_LMO_02,"aw",%progbits
+ 108              	 .align 3
+ 111              	CAN_OBDII_LMO_02:
+ 112 0000 40540148 	 .word 1208046656
+ 113 0004 00       	 .byte 0
+ 114 0005 00       	 .byte 0
+ 115 0006 00       	 .byte 0
+ 116 0007 80       	 .byte 128
+ 117 0008 00       	 .byte 0
+ 118 0009 00       	 .byte 0
+ 119 000a 00       	 .byte 0
+ 120 000b 20       	 .byte 32
+ 121 000c 08       	 .byte 8
+ 122 000d 000000   	 .space 3
+ 123 0010 00000000 	 .word 0
+ 124 0014 00000000 	 .word 0
+ 125 0018 00       	 .byte 0
+ 126 0019 00000000 	 .space 7
+ 126      000000
+ 127              	 .global CAN_OBDII_LMO_02_Config
+ 128              	 .section .rodata.CAN_OBDII_LMO_02_Config,"a",%progbits
+ 129              	 .align 2
+ 132              	CAN_OBDII_LMO_02_Config:
+ 133 0000 00000000 	 .word CAN_OBDII_LMO_02
+ 134 0004 22       	 .byte 34
+ 135 0005 00       	 .byte 0
+ 136 0006 00       	 .byte 0
+ 137 0007 00       	 .byte 0
+ 138 0008 01       	 .byte 1
+ 139 0009 000000   	 .space 3
+ 140              	 .global CAN_OBDII_LMO_03
+ 141              	 .section .data.CAN_OBDII_LMO_03,"aw",%progbits
+ 142              	 .align 3
+ 145              	CAN_OBDII_LMO_03:
+ 146 0000 60540148 	 .word 1208046688
+ 147 0004 D5       	 .byte 213
+ 148 0005 02       	 .byte 2
+ 149 0006 00       	 .byte 0
+ 150 0007 80       	 .byte 128
+ 151 0008 FF       	 .byte 255
+ 152 0009 07       	 .byte 7
+ 153 000a 00       	 .byte 0
+ 154 000b 20       	 .byte 32
+ 155 000c 08       	 .byte 8
+ 156 000d 000000   	 .space 3
+ 157 0010 00000000 	 .word 0
+ 158 0014 00000000 	 .word 0
+ 159 0018 00       	 .byte 0
+ 160 0019 00000000 	 .space 7
+ 160      000000
+ 161              	 .global CAN_OBDII_LMO_03_Config
+ 162              	 .section .rodata.CAN_OBDII_LMO_03_Config,"a",%progbits
+ 163              	 .align 2
+ 166              	CAN_OBDII_LMO_03_Config:
+ 167 0000 00000000 	 .word CAN_OBDII_LMO_03
+ 168 0004 23       	 .byte 35
+ 169 0005 00       	 .byte 0
+ 170 0006 01       	 .byte 1
+ 171 0007 00       	 .byte 0
+ 172 0008 01       	 .byte 1
+ 173 0009 000000   	 .space 3
+ 174              	 .global CAN_OBDII
+ 175              	 .section .rodata.CAN_OBDII,"a",%progbits
+ 176              	 .align 2
+ 179              	CAN_OBDII:
+ 180 0000 00000000 	 .word GLOBAL_CAN_0
+ 181 0004 00430148 	 .word 1208042240
+ 182 0008 00000000 	 .word CAN_OBDII_BitTimeConfig
+ 183 000c 00000000 	 .word CAN_OBDII_LMO_01_Config
+ 184 0010 00000000 	 .word CAN_OBDII_LMO_02_Config
+ 185 0014 00000000 	 .word CAN_OBDII_LMO_03_Config
+ 186 0018 00000000 	 .word 0
+ 187 001c 00000000 	 .word 0
+ 188 0020 00000000 	 .word 0
+ 189 0024 00000000 	 .word 0
+ 190 0028 00000000 	 .word 0
+ 191 002c 00000000 	 .word 0
+ 192 0030 00000000 	 .word 0
+ 193 0034 00000000 	 .word 0
+ 194 0038 00000000 	 .word 0
+ 195 003c 00000000 	 .word 0
+ 196 0040 00000000 	 .word 0
+ 197 0044 00000000 	 .word 0
+ 198 0048 00000000 	 .word 0
+ 199 004c 00000000 	 .word 0
+ 200 0050 00000000 	 .word 0
+ 201 0054 00000000 	 .word 0
+ 202 0058 00000000 	 .word 0
+ 203 005c 00000000 	 .word 0
+ 204 0060 00000000 	 .word 0
+ 205 0064 00000000 	 .word 0
+ 206 0068 00000000 	 .word 0
+ 207 006c 00000000 	 .word 0
+ 208 0070 00000000 	 .word 0
+ 209 0074 00000000 	 .word 0
+ 210 0078 00000000 	 .word 0
+ 211 007c 00000000 	 .word 0
+ 212 0080 00000000 	 .word 0
+ 213 0084 00000000 	 .word 0
+ 214 0088 00000000 	 .word 0
+ 215 008c 00000000 	 .word CAN_OBDII_sr
+ 216 0090 00000000 	 .word CAN_OBDII_gpio_out
+ 217 0094 00000000 	 .word CAN_OBDII_gpio_out_config
+ 218 0098 00000000 	 .word CAN_OBDII_gpio_in
+ 219 009c 00000000 	 .word CAN_OBDII_gpio_in_config
+ 220 00a0 03       	 .byte 3
+ 221 00a1 01       	 .byte 1
+ 222 00a2 03       	 .byte 3
+ 223 00a3 00       	 .byte 0
+ 224 00a4 00       	 .byte 0
+ 225 00a5 00       	 .byte 0
+ 226 00a6 00       	 .byte 0
+ 227 00a7 00       	 .byte 0
+ 228              	 .text
+ 229              	.Letext0:
+ 230              	 .file 1 "c:\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 231              	 .file 2 "c:\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\stdint.h"
+ 232              	 .file 3 "C:/Users/erhan/Desktop/smartlogger/design/firmware/xmc4500/smart_logger/smart_logger/Libraries/CMSIS/Infineon/XMC4500_series/Include/XMC4500.h"
+ 233              	 .file 4 "C:/Users/erhan/Desktop/smartlogger/design/firmware/xmc4500/smart_logger/smart_logger/Libraries/XMCLib/inc/xmc_can.h"
+ 234              	 .file 5 "C:/Users/erhan/Desktop/smartlogger/design/firmware/xmc4500/smart_logger/smart_logger/Libraries/XMCLib/inc/xmc_gpio.h"
+ 235              	 .file 6 "C:/Users/erhan/Desktop/smartlogger/design/firmware/xmc4500/smart_logger/smart_logger/Libraries/XMCLib/inc/xmc4_gpio.h"
+ 236              	 .file 7 "../Dave/Generated/CAN_NODE/../GLOBAL_CAN/global_can.h"
+ 237              	 .file 8 "../Dave/Generated/CAN_NODE/can_node.h"
+ 238              	 .file 9 "C:/Users/erhan/Desktop/smartlogger/design/firmware/xmc4500/smart_logger/smart_logger/Libraries/CMSIS/Include/core_cm4.h"
+ 239              	 .file 10 "C:/Users/erhan/Desktop/smartlogger/design/firmware/xmc4500/smart_logger/smart_logger/Libraries/CMSIS/Infineon/XMC4500_series/Include/system_XMC4500.h"
+ 240              	 .file 11 "../Dave/Generated/CAN_NODE/../GLOBAL_CAN/global_can_extern.h"
+ 241              	 .file 12 "../Dave/Generated/CAN_NODE/can_node_conf.c"
+DEFINED SYMBOLS
+                            *ABS*:00000000 can_node_conf.c
+    {standard input}:24     .rodata.CAN_OBDII_gpio_out:00000000 CAN_OBDII_gpio_out
+    {standard input}:21     .rodata.CAN_OBDII_gpio_out:00000000 $d
+    {standard input}:33     .rodata.CAN_OBDII_gpio_out_config:00000000 CAN_OBDII_gpio_out_config
+    {standard input}:30     .rodata.CAN_OBDII_gpio_out_config:00000000 $d
+    {standard input}:44     .rodata.CAN_OBDII_gpio_in:00000000 CAN_OBDII_gpio_in
+    {standard input}:41     .rodata.CAN_OBDII_gpio_in:00000000 $d
+    {standard input}:53     .rodata.CAN_OBDII_gpio_in_config:00000000 CAN_OBDII_gpio_in_config
+    {standard input}:50     .rodata.CAN_OBDII_gpio_in_config:00000000 $d
+    {standard input}:60     .data.CAN_OBDII_BitTimeConfig:00000000 CAN_OBDII_BitTimeConfig
+    {standard input}:57     .data.CAN_OBDII_BitTimeConfig:00000000 $d
+    {standard input}:70     .rodata.CAN_OBDII_sr:00000000 CAN_OBDII_sr
+    {standard input}:67     .rodata.CAN_OBDII_sr:00000000 $d
+    {standard input}:77     .data.CAN_OBDII_LMO_01:00000000 CAN_OBDII_LMO_01
+    {standard input}:74     .data.CAN_OBDII_LMO_01:00000000 $d
+    {standard input}:98     .rodata.CAN_OBDII_LMO_01_Config:00000000 CAN_OBDII_LMO_01_Config
+    {standard input}:95     .rodata.CAN_OBDII_LMO_01_Config:00000000 $d
+    {standard input}:111    .data.CAN_OBDII_LMO_02:00000000 CAN_OBDII_LMO_02
+    {standard input}:108    .data.CAN_OBDII_LMO_02:00000000 $d
+    {standard input}:132    .rodata.CAN_OBDII_LMO_02_Config:00000000 CAN_OBDII_LMO_02_Config
+    {standard input}:129    .rodata.CAN_OBDII_LMO_02_Config:00000000 $d
+    {standard input}:145    .data.CAN_OBDII_LMO_03:00000000 CAN_OBDII_LMO_03
+    {standard input}:142    .data.CAN_OBDII_LMO_03:00000000 $d
+    {standard input}:166    .rodata.CAN_OBDII_LMO_03_Config:00000000 CAN_OBDII_LMO_03_Config
+    {standard input}:163    .rodata.CAN_OBDII_LMO_03_Config:00000000 $d
+    {standard input}:179    .rodata.CAN_OBDII:00000000 CAN_OBDII
+    {standard input}:176    .rodata.CAN_OBDII:00000000 $d
+
+UNDEFINED SYMBOLS
+GLOBAL_CAN_0

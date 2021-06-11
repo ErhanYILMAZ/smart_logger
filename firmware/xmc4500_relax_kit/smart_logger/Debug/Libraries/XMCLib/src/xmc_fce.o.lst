@@ -1,0 +1,1074 @@
+   1              	 .syntax unified
+   2              	 .cpu cortex-m4
+   3              	 .eabi_attribute 27,3
+   4              	 .fpu fpv4-sp-d16
+   5              	 .eabi_attribute 20,1
+   6              	 .eabi_attribute 21,1
+   7              	 .eabi_attribute 23,3
+   8              	 .eabi_attribute 24,1
+   9              	 .eabi_attribute 25,1
+  10              	 .eabi_attribute 26,1
+  11              	 .eabi_attribute 30,6
+  12              	 .eabi_attribute 34,1
+  13              	 .eabi_attribute 18,4
+  14              	 .thumb
+  15              	 .file "xmc_fce.c"
+  16              	 .text
+  17              	.Ltext0:
+  18              	 .cfi_sections .debug_frame
+  19              	 .section .text.XMC_FCE_Init,"ax",%progbits
+  20              	 .align 2
+  21              	 .global XMC_FCE_Init
+  22              	 .thumb
+  23              	 .thumb_func
+  25              	XMC_FCE_Init:
+  26              	.LFB185:
+  27              	 .file 1 "../Libraries/XMCLib/src/xmc_fce.c"
+   1:../Libraries/XMCLib/src/xmc_fce.c **** /**
+   2:../Libraries/XMCLib/src/xmc_fce.c ****  * @file xmc_fce.c
+   3:../Libraries/XMCLib/src/xmc_fce.c ****  * @date 2017-12-14
+   4:../Libraries/XMCLib/src/xmc_fce.c ****  *
+   5:../Libraries/XMCLib/src/xmc_fce.c ****  * @cond
+   6:../Libraries/XMCLib/src/xmc_fce.c ****  **************************************************************************************************
+   7:../Libraries/XMCLib/src/xmc_fce.c ****  * XMClib v2.1.20 - XMC Peripheral Driver Library 
+   8:../Libraries/XMCLib/src/xmc_fce.c ****  *
+   9:../Libraries/XMCLib/src/xmc_fce.c ****  * Copyright (c) 2015-2018, Infineon Technologies AG
+  10:../Libraries/XMCLib/src/xmc_fce.c ****  * All rights reserved.                        
+  11:../Libraries/XMCLib/src/xmc_fce.c ****  *                                             
+  12:../Libraries/XMCLib/src/xmc_fce.c ****  * Redistribution and use in source and binary forms, with or without modification,are permitted pr
+  13:../Libraries/XMCLib/src/xmc_fce.c ****  * following conditions are met:   
+  14:../Libraries/XMCLib/src/xmc_fce.c ****  *                                                                              
+  15:../Libraries/XMCLib/src/xmc_fce.c ****  * Redistributions of source code must retain the above copyright notice, this list of conditions a
+  16:../Libraries/XMCLib/src/xmc_fce.c ****  * disclaimer.                        
+  17:../Libraries/XMCLib/src/xmc_fce.c ****  * 
+  18:../Libraries/XMCLib/src/xmc_fce.c ****  * Redistributions in binary form must reproduce the above copyright notice, this list of condition
+  19:../Libraries/XMCLib/src/xmc_fce.c ****  * disclaimer in the documentation and/or other materials provided with the distribution.          
+  20:../Libraries/XMCLib/src/xmc_fce.c ****  * 
+  21:../Libraries/XMCLib/src/xmc_fce.c ****  * Neither the name of the copyright holders nor the names of its contributors may be used to endor
+  22:../Libraries/XMCLib/src/xmc_fce.c ****  * products derived from this software without specific prior written permission.                  
+  23:../Libraries/XMCLib/src/xmc_fce.c ****  *                                                                              
+  24:../Libraries/XMCLib/src/xmc_fce.c ****  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR I
+  25:../Libraries/XMCLib/src/xmc_fce.c ****  * INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTI
+  26:../Libraries/XMCLib/src/xmc_fce.c ****  * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE  FOR ANY DIRECT, IN
+  27:../Libraries/XMCLib/src/xmc_fce.c ****  * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBS
+  28:../Libraries/XMCLib/src/xmc_fce.c ****  * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THE
+  29:../Libraries/XMCLib/src/xmc_fce.c ****  * WHETHER IN CONTRACT, STRICT LIABILITY,OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY
+  30:../Libraries/XMCLib/src/xmc_fce.c ****  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.                            
+  31:../Libraries/XMCLib/src/xmc_fce.c ****  *                                                                              
+  32:../Libraries/XMCLib/src/xmc_fce.c ****  * To improve the quality of the software, users are encouraged to share modifications, enhancement
+  33:../Libraries/XMCLib/src/xmc_fce.c ****  * Infineon Technologies AG dave@infineon.com).                                                    
+  34:../Libraries/XMCLib/src/xmc_fce.c ****  **************************************************************************************************
+  35:../Libraries/XMCLib/src/xmc_fce.c ****  *
+  36:../Libraries/XMCLib/src/xmc_fce.c ****  * Change History
+  37:../Libraries/XMCLib/src/xmc_fce.c ****  * --------------
+  38:../Libraries/XMCLib/src/xmc_fce.c ****  *
+  39:../Libraries/XMCLib/src/xmc_fce.c ****  * 2015-02-20:
+  40:../Libraries/XMCLib/src/xmc_fce.c ****  *     - Initial <br>
+  41:../Libraries/XMCLib/src/xmc_fce.c ****  *      
+  42:../Libraries/XMCLib/src/xmc_fce.c ****  * 2015-06-20:
+  43:../Libraries/XMCLib/src/xmc_fce.c ****  *     - Removed GetDriverVersion API
+  44:../Libraries/XMCLib/src/xmc_fce.c ****  *
+  45:../Libraries/XMCLib/src/xmc_fce.c ****  * 2017-12-14:
+  46:../Libraries/XMCLib/src/xmc_fce.c ****  *     - XMC_FCE_CalculateCRC8()
+  47:../Libraries/XMCLib/src/xmc_fce.c ****  *       Ensure 32bit access to IR register
+  48:../Libraries/XMCLib/src/xmc_fce.c ****  *     - XMC_FCE_CalculateCRC16()
+  49:../Libraries/XMCLib/src/xmc_fce.c ****  *       Ensure 32bit access to IR register
+  50:../Libraries/XMCLib/src/xmc_fce.c ****  *       Remove restriction on data source allignment
+  51:../Libraries/XMCLib/src/xmc_fce.c ****  *     - XMC_FCE_CalculateCRC32()
+  52:../Libraries/XMCLib/src/xmc_fce.c ****  *       Ensure 32bit access to IR register
+  53:../Libraries/XMCLib/src/xmc_fce.c ****  *       Remove restriction on data source allignment
+  54:../Libraries/XMCLib/src/xmc_fce.c ****  *
+  55:../Libraries/XMCLib/src/xmc_fce.c ****  * @endcond 
+  56:../Libraries/XMCLib/src/xmc_fce.c ****  *
+  57:../Libraries/XMCLib/src/xmc_fce.c ****  */
+  58:../Libraries/XMCLib/src/xmc_fce.c **** 
+  59:../Libraries/XMCLib/src/xmc_fce.c **** /**************************************************************************************************
+  60:../Libraries/XMCLib/src/xmc_fce.c ****  * HEADER FILES
+  61:../Libraries/XMCLib/src/xmc_fce.c ****  **************************************************************************************************
+  62:../Libraries/XMCLib/src/xmc_fce.c **** #include <xmc_fce.h>
+  63:../Libraries/XMCLib/src/xmc_fce.c **** 
+  64:../Libraries/XMCLib/src/xmc_fce.c **** #if defined (FCE)
+  65:../Libraries/XMCLib/src/xmc_fce.c **** #include <xmc_scu.h>
+  66:../Libraries/XMCLib/src/xmc_fce.c **** 
+  67:../Libraries/XMCLib/src/xmc_fce.c **** /*******************************************************************************
+  68:../Libraries/XMCLib/src/xmc_fce.c ****  * API IMPLEMENTATION
+  69:../Libraries/XMCLib/src/xmc_fce.c ****  **************************************************************************************************
+  70:../Libraries/XMCLib/src/xmc_fce.c **** 
+  71:../Libraries/XMCLib/src/xmc_fce.c **** /*
+  72:../Libraries/XMCLib/src/xmc_fce.c ****  * Initialize the FCE peripheral:
+  73:../Libraries/XMCLib/src/xmc_fce.c ****  * Update FCE configuration and initialize seed value
+  74:../Libraries/XMCLib/src/xmc_fce.c ****  */
+  75:../Libraries/XMCLib/src/xmc_fce.c **** XMC_FCE_STATUS_t XMC_FCE_Init(const XMC_FCE_t *const engine)
+  76:../Libraries/XMCLib/src/xmc_fce.c **** {
+  28              	 .loc 1 76 0
+  29              	 .cfi_startproc
+  30              	 
+  31              	 
+  32              	 
+  33 0000 80B4     	 push {r7}
+  34              	.LCFI0:
+  35              	 .cfi_def_cfa_offset 4
+  36              	 .cfi_offset 7,-4
+  37 0002 83B0     	 sub sp,sp,#12
+  38              	.LCFI1:
+  39              	 .cfi_def_cfa_offset 16
+  40 0004 00AF     	 add r7,sp,#0
+  41              	.LCFI2:
+  42              	 .cfi_def_cfa_register 7
+  43 0006 7860     	 str r0,[r7,#4]
+  77:../Libraries/XMCLib/src/xmc_fce.c ****   engine->kernel_ptr->CFG = engine->fce_cfg_update.regval;
+  44              	 .loc 1 77 0
+  45 0008 7B68     	 ldr r3,[r7,#4]
+  46 000a 1B68     	 ldr r3,[r3]
+  47 000c 7A68     	 ldr r2,[r7,#4]
+  48 000e 5268     	 ldr r2,[r2,#4]
+  49 0010 9A60     	 str r2,[r3,#8]
+  78:../Libraries/XMCLib/src/xmc_fce.c ****   engine->kernel_ptr->CRC = engine->seedvalue;
+  50              	 .loc 1 78 0
+  51 0012 7B68     	 ldr r3,[r7,#4]
+  52 0014 1B68     	 ldr r3,[r3]
+  53 0016 7A68     	 ldr r2,[r7,#4]
+  54 0018 9268     	 ldr r2,[r2,#8]
+  55 001a 9A61     	 str r2,[r3,#24]
+  79:../Libraries/XMCLib/src/xmc_fce.c ****   
+  80:../Libraries/XMCLib/src/xmc_fce.c ****   return XMC_FCE_STATUS_OK;
+  56              	 .loc 1 80 0
+  57 001c 0023     	 movs r3,#0
+  81:../Libraries/XMCLib/src/xmc_fce.c **** }
+  58              	 .loc 1 81 0
+  59 001e 1846     	 mov r0,r3
+  60 0020 0C37     	 adds r7,r7,#12
+  61              	.LCFI3:
+  62              	 .cfi_def_cfa_offset 4
+  63 0022 BD46     	 mov sp,r7
+  64              	.LCFI4:
+  65              	 .cfi_def_cfa_register 13
+  66              	 
+  67 0024 5DF8047B 	 ldr r7,[sp],#4
+  68              	.LCFI5:
+  69              	 .cfi_restore 7
+  70              	 .cfi_def_cfa_offset 0
+  71 0028 7047     	 bx lr
+  72              	 .cfi_endproc
+  73              	.LFE185:
+  75 002a 00BF     	 .section .text.XMC_FCE_Disable,"ax",%progbits
+  76              	 .align 2
+  77              	 .global XMC_FCE_Disable
+  78              	 .thumb
+  79              	 .thumb_func
+  81              	XMC_FCE_Disable:
+  82              	.LFB186:
+  82:../Libraries/XMCLib/src/xmc_fce.c **** 
+  83:../Libraries/XMCLib/src/xmc_fce.c **** /* Disable FCE */
+  84:../Libraries/XMCLib/src/xmc_fce.c **** void XMC_FCE_Disable(void)
+  85:../Libraries/XMCLib/src/xmc_fce.c **** {
+  83              	 .loc 1 85 0
+  84              	 .cfi_startproc
+  85              	 
+  86              	 
+  87 0000 80B5     	 push {r7,lr}
+  88              	.LCFI6:
+  89              	 .cfi_def_cfa_offset 8
+  90              	 .cfi_offset 7,-8
+  91              	 .cfi_offset 14,-4
+  92 0002 00AF     	 add r7,sp,#0
+  93              	.LCFI7:
+  94              	 .cfi_def_cfa_register 7
+  86:../Libraries/XMCLib/src/xmc_fce.c ****   FCE->CLC |= (uint32_t)FCE_CLC_DISR_Msk;
+  95              	 .loc 1 86 0
+  96 0004 044A     	 ldr r2,.L4
+  97 0006 044B     	 ldr r3,.L4
+  98 0008 1B68     	 ldr r3,[r3]
+  99 000a 43F00103 	 orr r3,r3,#1
+ 100 000e 1360     	 str r3,[r2]
+  87:../Libraries/XMCLib/src/xmc_fce.c ****   
+  88:../Libraries/XMCLib/src/xmc_fce.c ****   XMC_SCU_RESET_AssertPeripheralReset(XMC_SCU_PERIPHERAL_RESET_FCE);
+ 101              	 .loc 1 88 0
+ 102 0010 0248     	 ldr r0,.L4+4
+ 103 0012 FFF7FEFF 	 bl XMC_SCU_RESET_AssertPeripheralReset
+  89:../Libraries/XMCLib/src/xmc_fce.c **** 
+  90:../Libraries/XMCLib/src/xmc_fce.c **** #if defined(CLOCK_GATING_SUPPORTED)
+  91:../Libraries/XMCLib/src/xmc_fce.c ****   XMC_SCU_CLOCK_GatePeripheralClock(XMC_SCU_PERIPHERAL_CLOCK_FCE);
+  92:../Libraries/XMCLib/src/xmc_fce.c **** #endif
+  93:../Libraries/XMCLib/src/xmc_fce.c **** 
+  94:../Libraries/XMCLib/src/xmc_fce.c **** }
+ 104              	 .loc 1 94 0
+ 105 0016 80BD     	 pop {r7,pc}
+ 106              	.L5:
+ 107              	 .align 2
+ 108              	.L4:
+ 109 0018 00000250 	 .word 1342308352
+ 110 001c 40000020 	 .word 536870976
+ 111              	 .cfi_endproc
+ 112              	.LFE186:
+ 114              	 .section .text.XMC_FCE_Enable,"ax",%progbits
+ 115              	 .align 2
+ 116              	 .global XMC_FCE_Enable
+ 117              	 .thumb
+ 118              	 .thumb_func
+ 120              	XMC_FCE_Enable:
+ 121              	.LFB187:
+  95:../Libraries/XMCLib/src/xmc_fce.c **** 
+  96:../Libraries/XMCLib/src/xmc_fce.c **** /* Enable FCE */
+  97:../Libraries/XMCLib/src/xmc_fce.c **** void XMC_FCE_Enable(void)
+  98:../Libraries/XMCLib/src/xmc_fce.c **** {
+ 122              	 .loc 1 98 0
+ 123              	 .cfi_startproc
+ 124              	 
+ 125              	 
+ 126 0000 80B5     	 push {r7,lr}
+ 127              	.LCFI8:
+ 128              	 .cfi_def_cfa_offset 8
+ 129              	 .cfi_offset 7,-8
+ 130              	 .cfi_offset 14,-4
+ 131 0002 00AF     	 add r7,sp,#0
+ 132              	.LCFI9:
+ 133              	 .cfi_def_cfa_register 7
+  99:../Libraries/XMCLib/src/xmc_fce.c **** #if defined(CLOCK_GATING_SUPPORTED)
+ 100:../Libraries/XMCLib/src/xmc_fce.c ****   XMC_SCU_CLOCK_UngatePeripheralClock(XMC_SCU_PERIPHERAL_CLOCK_FCE);
+ 101:../Libraries/XMCLib/src/xmc_fce.c **** #endif
+ 102:../Libraries/XMCLib/src/xmc_fce.c **** 
+ 103:../Libraries/XMCLib/src/xmc_fce.c ****   XMC_SCU_RESET_DeassertPeripheralReset(XMC_SCU_PERIPHERAL_RESET_FCE);
+ 134              	 .loc 1 103 0
+ 135 0004 0448     	 ldr r0,.L7
+ 136 0006 FFF7FEFF 	 bl XMC_SCU_RESET_DeassertPeripheralReset
+ 104:../Libraries/XMCLib/src/xmc_fce.c **** 
+ 105:../Libraries/XMCLib/src/xmc_fce.c ****   FCE->CLC &= (uint32_t)~FCE_CLC_DISR_Msk;
+ 137              	 .loc 1 105 0
+ 138 000a 044A     	 ldr r2,.L7+4
+ 139 000c 034B     	 ldr r3,.L7+4
+ 140 000e 1B68     	 ldr r3,[r3]
+ 141 0010 23F00103 	 bic r3,r3,#1
+ 142 0014 1360     	 str r3,[r2]
+ 106:../Libraries/XMCLib/src/xmc_fce.c **** }
+ 143              	 .loc 1 106 0
+ 144 0016 80BD     	 pop {r7,pc}
+ 145              	.L8:
+ 146              	 .align 2
+ 147              	.L7:
+ 148 0018 40000020 	 .word 536870976
+ 149 001c 00000250 	 .word 1342308352
+ 150              	 .cfi_endproc
+ 151              	.LFE187:
+ 153              	 .section .text.XMC_FCE_CalculateCRC8,"ax",%progbits
+ 154              	 .align 2
+ 155              	 .global XMC_FCE_CalculateCRC8
+ 156              	 .thumb
+ 157              	 .thumb_func
+ 159              	XMC_FCE_CalculateCRC8:
+ 160              	.LFB188:
+ 107:../Libraries/XMCLib/src/xmc_fce.c **** 
+ 108:../Libraries/XMCLib/src/xmc_fce.c **** /* Calculate and return the SAE J1850 CRC8 checksum */
+ 109:../Libraries/XMCLib/src/xmc_fce.c **** XMC_FCE_STATUS_t XMC_FCE_CalculateCRC8(const XMC_FCE_t *const engine,
+ 110:../Libraries/XMCLib/src/xmc_fce.c ****                                        const uint8_t *data,
+ 111:../Libraries/XMCLib/src/xmc_fce.c **** 									   uint32_t length,
+ 112:../Libraries/XMCLib/src/xmc_fce.c **** 									   uint8_t *result)
+ 113:../Libraries/XMCLib/src/xmc_fce.c **** {
+ 161              	 .loc 1 113 0
+ 162              	 .cfi_startproc
+ 163              	 
+ 164              	 
+ 165              	 
+ 166 0000 80B4     	 push {r7}
+ 167              	.LCFI10:
+ 168              	 .cfi_def_cfa_offset 4
+ 169              	 .cfi_offset 7,-4
+ 170 0002 87B0     	 sub sp,sp,#28
+ 171              	.LCFI11:
+ 172              	 .cfi_def_cfa_offset 32
+ 173 0004 00AF     	 add r7,sp,#0
+ 174              	.LCFI12:
+ 175              	 .cfi_def_cfa_register 7
+ 176 0006 F860     	 str r0,[r7,#12]
+ 177 0008 B960     	 str r1,[r7,#8]
+ 178 000a 7A60     	 str r2,[r7,#4]
+ 179 000c 3B60     	 str r3,[r7]
+ 114:../Libraries/XMCLib/src/xmc_fce.c ****   XMC_FCE_STATUS_t status = XMC_FCE_STATUS_OK;
+ 180              	 .loc 1 114 0
+ 181 000e 0023     	 movs r3,#0
+ 182 0010 FB75     	 strb r3,[r7,#23]
+ 115:../Libraries/XMCLib/src/xmc_fce.c **** 	
+ 116:../Libraries/XMCLib/src/xmc_fce.c ****   XMC_ASSERT("XMC_FCE_CalculateCRC8: Wrong FCE kernel used", (engine -> kernel_ptr == XMC_FCE_CRC8)
+ 117:../Libraries/XMCLib/src/xmc_fce.c **** 
+ 118:../Libraries/XMCLib/src/xmc_fce.c ****   if (length == 0UL)
+ 183              	 .loc 1 118 0
+ 184 0012 7B68     	 ldr r3,[r7,#4]
+ 185 0014 002B     	 cmp r3,#0
+ 186 0016 02D1     	 bne .L10
+ 119:../Libraries/XMCLib/src/xmc_fce.c ****   {
+ 120:../Libraries/XMCLib/src/xmc_fce.c ****     status = XMC_FCE_STATUS_ERROR;
+ 187              	 .loc 1 120 0
+ 188 0018 0223     	 movs r3,#2
+ 189 001a FB75     	 strb r3,[r7,#23]
+ 190 001c 14E0     	 b .L11
+ 191              	.L10:
+ 121:../Libraries/XMCLib/src/xmc_fce.c ****   }
+ 122:../Libraries/XMCLib/src/xmc_fce.c ****   else
+ 123:../Libraries/XMCLib/src/xmc_fce.c ****   {
+ 124:../Libraries/XMCLib/src/xmc_fce.c ****     while (0UL != length)
+ 192              	 .loc 1 124 0
+ 193 001e 0AE0     	 b .L12
+ 194              	.L13:
+ 125:../Libraries/XMCLib/src/xmc_fce.c ****     {
+ 126:../Libraries/XMCLib/src/xmc_fce.c ****       engine->kernel_ptr->IR = (uint32_t)*data;
+ 195              	 .loc 1 126 0
+ 196 0020 FB68     	 ldr r3,[r7,#12]
+ 197 0022 1B68     	 ldr r3,[r3]
+ 198 0024 BA68     	 ldr r2,[r7,#8]
+ 199 0026 1278     	 ldrb r2,[r2]
+ 200 0028 1A60     	 str r2,[r3]
+ 127:../Libraries/XMCLib/src/xmc_fce.c ****       data++;
+ 201              	 .loc 1 127 0
+ 202 002a BB68     	 ldr r3,[r7,#8]
+ 203 002c 0133     	 adds r3,r3,#1
+ 204 002e BB60     	 str r3,[r7,#8]
+ 128:../Libraries/XMCLib/src/xmc_fce.c ****       length -= 1U;
+ 205              	 .loc 1 128 0
+ 206 0030 7B68     	 ldr r3,[r7,#4]
+ 207 0032 013B     	 subs r3,r3,#1
+ 208 0034 7B60     	 str r3,[r7,#4]
+ 209              	.L12:
+ 124:../Libraries/XMCLib/src/xmc_fce.c ****     {
+ 210              	 .loc 1 124 0
+ 211 0036 7B68     	 ldr r3,[r7,#4]
+ 212 0038 002B     	 cmp r3,#0
+ 213 003a F1D1     	 bne .L13
+ 129:../Libraries/XMCLib/src/xmc_fce.c ****     }
+ 130:../Libraries/XMCLib/src/xmc_fce.c **** 
+ 131:../Libraries/XMCLib/src/xmc_fce.c ****     *result = (uint8_t)engine->kernel_ptr->CRC;
+ 214              	 .loc 1 131 0
+ 215 003c FB68     	 ldr r3,[r7,#12]
+ 216 003e 1B68     	 ldr r3,[r3]
+ 217 0040 9B69     	 ldr r3,[r3,#24]
+ 218 0042 DAB2     	 uxtb r2,r3
+ 219 0044 3B68     	 ldr r3,[r7]
+ 220 0046 1A70     	 strb r2,[r3]
+ 221              	.L11:
+ 132:../Libraries/XMCLib/src/xmc_fce.c ****   }
+ 133:../Libraries/XMCLib/src/xmc_fce.c **** 
+ 134:../Libraries/XMCLib/src/xmc_fce.c ****   return status;
+ 222              	 .loc 1 134 0
+ 223 0048 FB7D     	 ldrb r3,[r7,#23]
+ 135:../Libraries/XMCLib/src/xmc_fce.c **** }
+ 224              	 .loc 1 135 0
+ 225 004a 1846     	 mov r0,r3
+ 226 004c 1C37     	 adds r7,r7,#28
+ 227              	.LCFI13:
+ 228              	 .cfi_def_cfa_offset 4
+ 229 004e BD46     	 mov sp,r7
+ 230              	.LCFI14:
+ 231              	 .cfi_def_cfa_register 13
+ 232              	 
+ 233 0050 5DF8047B 	 ldr r7,[sp],#4
+ 234              	.LCFI15:
+ 235              	 .cfi_restore 7
+ 236              	 .cfi_def_cfa_offset 0
+ 237 0054 7047     	 bx lr
+ 238              	 .cfi_endproc
+ 239              	.LFE188:
+ 241 0056 00BF     	 .section .text.XMC_FCE_CalculateCRC16,"ax",%progbits
+ 242              	 .align 2
+ 243              	 .global XMC_FCE_CalculateCRC16
+ 244              	 .thumb
+ 245              	 .thumb_func
+ 247              	XMC_FCE_CalculateCRC16:
+ 248              	.LFB189:
+ 136:../Libraries/XMCLib/src/xmc_fce.c **** 
+ 137:../Libraries/XMCLib/src/xmc_fce.c **** /* Calculate and return calculated CCITT CRC16 checksum */
+ 138:../Libraries/XMCLib/src/xmc_fce.c **** XMC_FCE_STATUS_t XMC_FCE_CalculateCRC16(const XMC_FCE_t *const engine,
+ 139:../Libraries/XMCLib/src/xmc_fce.c ****                                         const uint16_t *data,
+ 140:../Libraries/XMCLib/src/xmc_fce.c **** 										uint32_t length,
+ 141:../Libraries/XMCLib/src/xmc_fce.c **** 										uint16_t *result)
+ 142:../Libraries/XMCLib/src/xmc_fce.c **** {
+ 249              	 .loc 1 142 0
+ 250              	 .cfi_startproc
+ 251              	 
+ 252              	 
+ 253              	 
+ 254 0000 80B4     	 push {r7}
+ 255              	.LCFI16:
+ 256              	 .cfi_def_cfa_offset 4
+ 257              	 .cfi_offset 7,-4
+ 258 0002 87B0     	 sub sp,sp,#28
+ 259              	.LCFI17:
+ 260              	 .cfi_def_cfa_offset 32
+ 261 0004 00AF     	 add r7,sp,#0
+ 262              	.LCFI18:
+ 263              	 .cfi_def_cfa_register 7
+ 264 0006 F860     	 str r0,[r7,#12]
+ 265 0008 B960     	 str r1,[r7,#8]
+ 266 000a 7A60     	 str r2,[r7,#4]
+ 267 000c 3B60     	 str r3,[r7]
+ 143:../Libraries/XMCLib/src/xmc_fce.c ****   XMC_FCE_STATUS_t status = XMC_FCE_STATUS_OK;
+ 268              	 .loc 1 143 0
+ 269 000e 0023     	 movs r3,#0
+ 270 0010 FB75     	 strb r3,[r7,#23]
+ 144:../Libraries/XMCLib/src/xmc_fce.c **** 	
+ 145:../Libraries/XMCLib/src/xmc_fce.c ****   XMC_ASSERT("XMC_FCE_CalculateCRC16: Wrong FCE kernel used", (engine -> kernel_ptr == XMC_FCE_CRC1
+ 146:../Libraries/XMCLib/src/xmc_fce.c ****   XMC_ASSERT("XMC_FCE_CalculateCRC16: Length field is empty", (length != 0));
+ 147:../Libraries/XMCLib/src/xmc_fce.c ****   XMC_ASSERT("XMC_FCE_CalculateCRC16: Length is not aligned", ((length & 0x1U) == 0));
+ 148:../Libraries/XMCLib/src/xmc_fce.c **** 
+ 149:../Libraries/XMCLib/src/xmc_fce.c ****   /* Check length is a multiple of 2 */
+ 150:../Libraries/XMCLib/src/xmc_fce.c ****   if ((length == 0) || ((length & 0x1U) != 0U))
+ 271              	 .loc 1 150 0
+ 272 0012 7B68     	 ldr r3,[r7,#4]
+ 273 0014 002B     	 cmp r3,#0
+ 274 0016 04D0     	 beq .L16
+ 275              	 .loc 1 150 0 is_stmt 0 discriminator 1
+ 276 0018 7B68     	 ldr r3,[r7,#4]
+ 277 001a 03F00103 	 and r3,r3,#1
+ 278 001e 002B     	 cmp r3,#0
+ 279 0020 02D0     	 beq .L17
+ 280              	.L16:
+ 151:../Libraries/XMCLib/src/xmc_fce.c ****   {
+ 152:../Libraries/XMCLib/src/xmc_fce.c ****     status = XMC_FCE_STATUS_ERROR;
+ 281              	 .loc 1 152 0 is_stmt 1
+ 282 0022 0223     	 movs r3,#2
+ 283 0024 FB75     	 strb r3,[r7,#23]
+ 284 0026 14E0     	 b .L18
+ 285              	.L17:
+ 153:../Libraries/XMCLib/src/xmc_fce.c ****   }
+ 154:../Libraries/XMCLib/src/xmc_fce.c ****   else
+ 155:../Libraries/XMCLib/src/xmc_fce.c ****   {
+ 156:../Libraries/XMCLib/src/xmc_fce.c ****     while (0UL != length)
+ 286              	 .loc 1 156 0
+ 287 0028 0AE0     	 b .L19
+ 288              	.L20:
+ 157:../Libraries/XMCLib/src/xmc_fce.c ****     {
+ 158:../Libraries/XMCLib/src/xmc_fce.c ****       engine->kernel_ptr->IR = (uint32_t)*data;
+ 289              	 .loc 1 158 0
+ 290 002a FB68     	 ldr r3,[r7,#12]
+ 291 002c 1B68     	 ldr r3,[r3]
+ 292 002e BA68     	 ldr r2,[r7,#8]
+ 293 0030 1288     	 ldrh r2,[r2]
+ 294 0032 1A60     	 str r2,[r3]
+ 159:../Libraries/XMCLib/src/xmc_fce.c ****       data++;
+ 295              	 .loc 1 159 0
+ 296 0034 BB68     	 ldr r3,[r7,#8]
+ 297 0036 0233     	 adds r3,r3,#2
+ 298 0038 BB60     	 str r3,[r7,#8]
+ 160:../Libraries/XMCLib/src/xmc_fce.c ****       length -= 2U;
+ 299              	 .loc 1 160 0
+ 300 003a 7B68     	 ldr r3,[r7,#4]
+ 301 003c 023B     	 subs r3,r3,#2
+ 302 003e 7B60     	 str r3,[r7,#4]
+ 303              	.L19:
+ 156:../Libraries/XMCLib/src/xmc_fce.c ****     {
+ 304              	 .loc 1 156 0
+ 305 0040 7B68     	 ldr r3,[r7,#4]
+ 306 0042 002B     	 cmp r3,#0
+ 307 0044 F1D1     	 bne .L20
+ 161:../Libraries/XMCLib/src/xmc_fce.c ****     }
+ 162:../Libraries/XMCLib/src/xmc_fce.c **** 	
+ 163:../Libraries/XMCLib/src/xmc_fce.c ****     *result = (uint16_t)engine->kernel_ptr->CRC;
+ 308              	 .loc 1 163 0
+ 309 0046 FB68     	 ldr r3,[r7,#12]
+ 310 0048 1B68     	 ldr r3,[r3]
+ 311 004a 9B69     	 ldr r3,[r3,#24]
+ 312 004c 9AB2     	 uxth r2,r3
+ 313 004e 3B68     	 ldr r3,[r7]
+ 314 0050 1A80     	 strh r2,[r3]
+ 315              	.L18:
+ 164:../Libraries/XMCLib/src/xmc_fce.c ****   }
+ 165:../Libraries/XMCLib/src/xmc_fce.c **** 
+ 166:../Libraries/XMCLib/src/xmc_fce.c ****   return status;
+ 316              	 .loc 1 166 0
+ 317 0052 FB7D     	 ldrb r3,[r7,#23]
+ 167:../Libraries/XMCLib/src/xmc_fce.c **** }
+ 318              	 .loc 1 167 0
+ 319 0054 1846     	 mov r0,r3
+ 320 0056 1C37     	 adds r7,r7,#28
+ 321              	.LCFI19:
+ 322              	 .cfi_def_cfa_offset 4
+ 323 0058 BD46     	 mov sp,r7
+ 324              	.LCFI20:
+ 325              	 .cfi_def_cfa_register 13
+ 326              	 
+ 327 005a 5DF8047B 	 ldr r7,[sp],#4
+ 328              	.LCFI21:
+ 329              	 .cfi_restore 7
+ 330              	 .cfi_def_cfa_offset 0
+ 331 005e 7047     	 bx lr
+ 332              	 .cfi_endproc
+ 333              	.LFE189:
+ 335              	 .section .text.XMC_FCE_CalculateCRC32,"ax",%progbits
+ 336              	 .align 2
+ 337              	 .global XMC_FCE_CalculateCRC32
+ 338              	 .thumb
+ 339              	 .thumb_func
+ 341              	XMC_FCE_CalculateCRC32:
+ 342              	.LFB190:
+ 168:../Libraries/XMCLib/src/xmc_fce.c **** 
+ 169:../Libraries/XMCLib/src/xmc_fce.c **** /* Calculate and return the IEEE 802.3 Ethernet CRC32 checksum */
+ 170:../Libraries/XMCLib/src/xmc_fce.c **** XMC_FCE_STATUS_t XMC_FCE_CalculateCRC32(const XMC_FCE_t *const engine,
+ 171:../Libraries/XMCLib/src/xmc_fce.c ****                                         const uint32_t *data,
+ 172:../Libraries/XMCLib/src/xmc_fce.c **** 										uint32_t length,
+ 173:../Libraries/XMCLib/src/xmc_fce.c **** 										uint32_t *result)
+ 174:../Libraries/XMCLib/src/xmc_fce.c **** {
+ 343              	 .loc 1 174 0
+ 344              	 .cfi_startproc
+ 345              	 
+ 346              	 
+ 347              	 
+ 348 0000 80B4     	 push {r7}
+ 349              	.LCFI22:
+ 350              	 .cfi_def_cfa_offset 4
+ 351              	 .cfi_offset 7,-4
+ 352 0002 87B0     	 sub sp,sp,#28
+ 353              	.LCFI23:
+ 354              	 .cfi_def_cfa_offset 32
+ 355 0004 00AF     	 add r7,sp,#0
+ 356              	.LCFI24:
+ 357              	 .cfi_def_cfa_register 7
+ 358 0006 F860     	 str r0,[r7,#12]
+ 359 0008 B960     	 str r1,[r7,#8]
+ 360 000a 7A60     	 str r2,[r7,#4]
+ 361 000c 3B60     	 str r3,[r7]
+ 175:../Libraries/XMCLib/src/xmc_fce.c ****   XMC_FCE_STATUS_t status = XMC_FCE_STATUS_OK;
+ 362              	 .loc 1 175 0
+ 363 000e 0023     	 movs r3,#0
+ 364 0010 FB75     	 strb r3,[r7,#23]
+ 176:../Libraries/XMCLib/src/xmc_fce.c **** 	
+ 177:../Libraries/XMCLib/src/xmc_fce.c ****   XMC_ASSERT("XMC_FCE_CalculateCRC32: Wrong FCE kernel used", ((engine->kernel_ptr == XMC_FCE_CRC32
+ 178:../Libraries/XMCLib/src/xmc_fce.c ****                                                                (engine->kernel_ptr == XMC_FCE_CRC32
+ 179:../Libraries/XMCLib/src/xmc_fce.c ****   XMC_ASSERT("XMC_FCE_CalculateCRC32: Length field is empty", (length != 0));
+ 180:../Libraries/XMCLib/src/xmc_fce.c ****   XMC_ASSERT("XMC_FCE_CalculateCRC32: Length is not aligned", ((length & 0x3U) == 0));
+ 181:../Libraries/XMCLib/src/xmc_fce.c **** 
+ 182:../Libraries/XMCLib/src/xmc_fce.c ****   /* Check length is a multiple of 4 */
+ 183:../Libraries/XMCLib/src/xmc_fce.c ****   if ((length == 0) || ((length & 0x3U) != 0U))
+ 365              	 .loc 1 183 0
+ 366 0012 7B68     	 ldr r3,[r7,#4]
+ 367 0014 002B     	 cmp r3,#0
+ 368 0016 04D0     	 beq .L23
+ 369              	 .loc 1 183 0 is_stmt 0 discriminator 1
+ 370 0018 7B68     	 ldr r3,[r7,#4]
+ 371 001a 03F00303 	 and r3,r3,#3
+ 372 001e 002B     	 cmp r3,#0
+ 373 0020 02D0     	 beq .L24
+ 374              	.L23:
+ 184:../Libraries/XMCLib/src/xmc_fce.c ****   {
+ 185:../Libraries/XMCLib/src/xmc_fce.c ****     status = XMC_FCE_STATUS_ERROR;
+ 375              	 .loc 1 185 0 is_stmt 1
+ 376 0022 0223     	 movs r3,#2
+ 377 0024 FB75     	 strb r3,[r7,#23]
+ 378 0026 13E0     	 b .L25
+ 379              	.L24:
+ 186:../Libraries/XMCLib/src/xmc_fce.c ****   }
+ 187:../Libraries/XMCLib/src/xmc_fce.c ****   else
+ 188:../Libraries/XMCLib/src/xmc_fce.c ****   {
+ 189:../Libraries/XMCLib/src/xmc_fce.c ****     while (0UL != length)
+ 380              	 .loc 1 189 0
+ 381 0028 0AE0     	 b .L26
+ 382              	.L27:
+ 190:../Libraries/XMCLib/src/xmc_fce.c ****     {
+ 191:../Libraries/XMCLib/src/xmc_fce.c ****       engine->kernel_ptr->IR = *data;
+ 383              	 .loc 1 191 0
+ 384 002a FB68     	 ldr r3,[r7,#12]
+ 385 002c 1B68     	 ldr r3,[r3]
+ 386 002e BA68     	 ldr r2,[r7,#8]
+ 387 0030 1268     	 ldr r2,[r2]
+ 388 0032 1A60     	 str r2,[r3]
+ 192:../Libraries/XMCLib/src/xmc_fce.c ****       data++;
+ 389              	 .loc 1 192 0
+ 390 0034 BB68     	 ldr r3,[r7,#8]
+ 391 0036 0433     	 adds r3,r3,#4
+ 392 0038 BB60     	 str r3,[r7,#8]
+ 193:../Libraries/XMCLib/src/xmc_fce.c ****       length -= 4U;
+ 393              	 .loc 1 193 0
+ 394 003a 7B68     	 ldr r3,[r7,#4]
+ 395 003c 043B     	 subs r3,r3,#4
+ 396 003e 7B60     	 str r3,[r7,#4]
+ 397              	.L26:
+ 189:../Libraries/XMCLib/src/xmc_fce.c ****     {
+ 398              	 .loc 1 189 0
+ 399 0040 7B68     	 ldr r3,[r7,#4]
+ 400 0042 002B     	 cmp r3,#0
+ 401 0044 F1D1     	 bne .L27
+ 194:../Libraries/XMCLib/src/xmc_fce.c ****     }
+ 195:../Libraries/XMCLib/src/xmc_fce.c **** 
+ 196:../Libraries/XMCLib/src/xmc_fce.c ****     *result = engine->kernel_ptr->CRC;
+ 402              	 .loc 1 196 0
+ 403 0046 FB68     	 ldr r3,[r7,#12]
+ 404 0048 1B68     	 ldr r3,[r3]
+ 405 004a 9A69     	 ldr r2,[r3,#24]
+ 406 004c 3B68     	 ldr r3,[r7]
+ 407 004e 1A60     	 str r2,[r3]
+ 408              	.L25:
+ 197:../Libraries/XMCLib/src/xmc_fce.c ****   }
+ 198:../Libraries/XMCLib/src/xmc_fce.c ****   
+ 199:../Libraries/XMCLib/src/xmc_fce.c ****   return status;
+ 409              	 .loc 1 199 0
+ 410 0050 FB7D     	 ldrb r3,[r7,#23]
+ 200:../Libraries/XMCLib/src/xmc_fce.c **** }
+ 411              	 .loc 1 200 0
+ 412 0052 1846     	 mov r0,r3
+ 413 0054 1C37     	 adds r7,r7,#28
+ 414              	.LCFI25:
+ 415              	 .cfi_def_cfa_offset 4
+ 416 0056 BD46     	 mov sp,r7
+ 417              	.LCFI26:
+ 418              	 .cfi_def_cfa_register 13
+ 419              	 
+ 420 0058 5DF8047B 	 ldr r7,[sp],#4
+ 421              	.LCFI27:
+ 422              	 .cfi_restore 7
+ 423              	 .cfi_def_cfa_offset 0
+ 424 005c 7047     	 bx lr
+ 425              	 .cfi_endproc
+ 426              	.LFE190:
+ 428 005e 00BF     	 .section .text.XMC_FCE_TriggerMismatch,"ax",%progbits
+ 429              	 .align 2
+ 430              	 .global XMC_FCE_TriggerMismatch
+ 431              	 .thumb
+ 432              	 .thumb_func
+ 434              	XMC_FCE_TriggerMismatch:
+ 435              	.LFB191:
+ 201:../Libraries/XMCLib/src/xmc_fce.c **** 
+ 202:../Libraries/XMCLib/src/xmc_fce.c **** /* Trigger mismatch in the CRC registers */
+ 203:../Libraries/XMCLib/src/xmc_fce.c **** void XMC_FCE_TriggerMismatch(const XMC_FCE_t *const engine, XMC_FCE_CTR_TEST_t test)
+ 204:../Libraries/XMCLib/src/xmc_fce.c **** {
+ 436              	 .loc 1 204 0
+ 437              	 .cfi_startproc
+ 438              	 
+ 439              	 
+ 440              	 
+ 441 0000 80B4     	 push {r7}
+ 442              	.LCFI28:
+ 443              	 .cfi_def_cfa_offset 4
+ 444              	 .cfi_offset 7,-4
+ 445 0002 83B0     	 sub sp,sp,#12
+ 446              	.LCFI29:
+ 447              	 .cfi_def_cfa_offset 16
+ 448 0004 00AF     	 add r7,sp,#0
+ 449              	.LCFI30:
+ 450              	 .cfi_def_cfa_register 7
+ 451 0006 7860     	 str r0,[r7,#4]
+ 452 0008 0B46     	 mov r3,r1
+ 453 000a FB70     	 strb r3,[r7,#3]
+ 205:../Libraries/XMCLib/src/xmc_fce.c ****   /* Create a 0 to 1 transition and clear to 0 once it is done */
+ 206:../Libraries/XMCLib/src/xmc_fce.c ****   engine->kernel_ptr->CTR &= ~((uint32_t)test);
+ 454              	 .loc 1 206 0
+ 455 000c 7B68     	 ldr r3,[r7,#4]
+ 456 000e 1B68     	 ldr r3,[r3]
+ 457 0010 7A68     	 ldr r2,[r7,#4]
+ 458 0012 1268     	 ldr r2,[r2]
+ 459 0014 D169     	 ldr r1,[r2,#28]
+ 460 0016 FA78     	 ldrb r2,[r7,#3]
+ 461 0018 D243     	 mvns r2,r2
+ 462 001a 0A40     	 ands r2,r2,r1
+ 463 001c DA61     	 str r2,[r3,#28]
+ 207:../Libraries/XMCLib/src/xmc_fce.c ****   engine->kernel_ptr->CTR |= (uint32_t)test;
+ 464              	 .loc 1 207 0
+ 465 001e 7B68     	 ldr r3,[r7,#4]
+ 466 0020 1B68     	 ldr r3,[r3]
+ 467 0022 7A68     	 ldr r2,[r7,#4]
+ 468 0024 1268     	 ldr r2,[r2]
+ 469 0026 D169     	 ldr r1,[r2,#28]
+ 470 0028 FA78     	 ldrb r2,[r7,#3]
+ 471 002a 0A43     	 orrs r2,r2,r1
+ 472 002c DA61     	 str r2,[r3,#28]
+ 208:../Libraries/XMCLib/src/xmc_fce.c ****   engine->kernel_ptr->CTR &= ~((uint32_t)test);
+ 473              	 .loc 1 208 0
+ 474 002e 7B68     	 ldr r3,[r7,#4]
+ 475 0030 1B68     	 ldr r3,[r3]
+ 476 0032 7A68     	 ldr r2,[r7,#4]
+ 477 0034 1268     	 ldr r2,[r2]
+ 478 0036 D169     	 ldr r1,[r2,#28]
+ 479 0038 FA78     	 ldrb r2,[r7,#3]
+ 480 003a D243     	 mvns r2,r2
+ 481 003c 0A40     	 ands r2,r2,r1
+ 482 003e DA61     	 str r2,[r3,#28]
+ 209:../Libraries/XMCLib/src/xmc_fce.c **** }
+ 483              	 .loc 1 209 0
+ 484 0040 0C37     	 adds r7,r7,#12
+ 485              	.LCFI31:
+ 486              	 .cfi_def_cfa_offset 4
+ 487 0042 BD46     	 mov sp,r7
+ 488              	.LCFI32:
+ 489              	 .cfi_def_cfa_register 13
+ 490              	 
+ 491 0044 5DF8047B 	 ldr r7,[sp],#4
+ 492              	.LCFI33:
+ 493              	 .cfi_restore 7
+ 494              	 .cfi_def_cfa_offset 0
+ 495 0048 7047     	 bx lr
+ 496              	 .cfi_endproc
+ 497              	.LFE191:
+ 499 004a 00BF     	 .section .text.XMC_FCE_LittleEndian16bit,"ax",%progbits
+ 500              	 .align 2
+ 501              	 .global XMC_FCE_LittleEndian16bit
+ 502              	 .thumb
+ 503              	 .thumb_func
+ 505              	XMC_FCE_LittleEndian16bit:
+ 506              	.LFB192:
+ 210:../Libraries/XMCLib/src/xmc_fce.c **** 
+ 211:../Libraries/XMCLib/src/xmc_fce.c **** /* Change endianness of 16-bit input buffer */
+ 212:../Libraries/XMCLib/src/xmc_fce.c **** void XMC_FCE_LittleEndian16bit(uint8_t* inbuffer, uint16_t* outbuffer, uint16_t length)
+ 213:../Libraries/XMCLib/src/xmc_fce.c **** {
+ 507              	 .loc 1 213 0
+ 508              	 .cfi_startproc
+ 509              	 
+ 510              	 
+ 511              	 
+ 512 0000 80B4     	 push {r7}
+ 513              	.LCFI34:
+ 514              	 .cfi_def_cfa_offset 4
+ 515              	 .cfi_offset 7,-4
+ 516 0002 87B0     	 sub sp,sp,#28
+ 517              	.LCFI35:
+ 518              	 .cfi_def_cfa_offset 32
+ 519 0004 00AF     	 add r7,sp,#0
+ 520              	.LCFI36:
+ 521              	 .cfi_def_cfa_register 7
+ 522 0006 F860     	 str r0,[r7,#12]
+ 523 0008 B960     	 str r1,[r7,#8]
+ 524 000a 1346     	 mov r3,r2
+ 525 000c FB80     	 strh r3,[r7,#6]
+ 214:../Libraries/XMCLib/src/xmc_fce.c ****   uint16_t counter = 0U;
+ 526              	 .loc 1 214 0
+ 527 000e 0023     	 movs r3,#0
+ 528 0010 FB82     	 strh r3,[r7,#22]
+ 215:../Libraries/XMCLib/src/xmc_fce.c ****   uint16_t bytecounter = 0U;
+ 529              	 .loc 1 215 0
+ 530 0012 0023     	 movs r3,#0
+ 531 0014 BB82     	 strh r3,[r7,#20]
+ 216:../Libraries/XMCLib/src/xmc_fce.c **** 
+ 217:../Libraries/XMCLib/src/xmc_fce.c ****   if ((length & 0x01U)  == 0)
+ 532              	 .loc 1 217 0
+ 533 0016 FB88     	 ldrh r3,[r7,#6]
+ 534 0018 03F00103 	 and r3,r3,#1
+ 535 001c 002B     	 cmp r3,#0
+ 536 001e 3AD1     	 bne .L30
+ 218:../Libraries/XMCLib/src/xmc_fce.c ****   {
+ 219:../Libraries/XMCLib/src/xmc_fce.c ****     for (counter = 0U; counter < (length >> 1); counter++)
+ 537              	 .loc 1 219 0
+ 538 0020 0023     	 movs r3,#0
+ 539 0022 FB82     	 strh r3,[r7,#22]
+ 540 0024 08E0     	 b .L32
+ 541              	.L33:
+ 220:../Libraries/XMCLib/src/xmc_fce.c ****     {
+ 221:../Libraries/XMCLib/src/xmc_fce.c ****       outbuffer[counter] = 0U;
+ 542              	 .loc 1 221 0 discriminator 3
+ 543 0026 FB8A     	 ldrh r3,[r7,#22]
+ 544 0028 5B00     	 lsls r3,r3,#1
+ 545 002a BA68     	 ldr r2,[r7,#8]
+ 546 002c 1344     	 add r3,r3,r2
+ 547 002e 0022     	 movs r2,#0
+ 548 0030 1A80     	 strh r2,[r3]
+ 219:../Libraries/XMCLib/src/xmc_fce.c ****     {
+ 549              	 .loc 1 219 0 discriminator 3
+ 550 0032 FB8A     	 ldrh r3,[r7,#22]
+ 551 0034 0133     	 adds r3,r3,#1
+ 552 0036 FB82     	 strh r3,[r7,#22]
+ 553              	.L32:
+ 219:../Libraries/XMCLib/src/xmc_fce.c ****     {
+ 554              	 .loc 1 219 0 is_stmt 0 discriminator 1
+ 555 0038 FB88     	 ldrh r3,[r7,#6]
+ 556 003a 5B08     	 lsrs r3,r3,#1
+ 557 003c 9BB2     	 uxth r3,r3
+ 558 003e FA8A     	 ldrh r2,[r7,#22]
+ 559 0040 9A42     	 cmp r2,r3
+ 560 0042 F0D3     	 bcc .L33
+ 222:../Libraries/XMCLib/src/xmc_fce.c ****     }
+ 223:../Libraries/XMCLib/src/xmc_fce.c **** 
+ 224:../Libraries/XMCLib/src/xmc_fce.c ****     outbuffer[counter] = 0U;
+ 561              	 .loc 1 224 0 is_stmt 1
+ 562 0044 FB8A     	 ldrh r3,[r7,#22]
+ 563 0046 5B00     	 lsls r3,r3,#1
+ 564 0048 BA68     	 ldr r2,[r7,#8]
+ 565 004a 1344     	 add r3,r3,r2
+ 566 004c 0022     	 movs r2,#0
+ 567 004e 1A80     	 strh r2,[r3]
+ 225:../Libraries/XMCLib/src/xmc_fce.c ****     counter = 0U;
+ 568              	 .loc 1 225 0
+ 569 0050 0023     	 movs r3,#0
+ 570 0052 FB82     	 strh r3,[r7,#22]
+ 226:../Libraries/XMCLib/src/xmc_fce.c **** 
+ 227:../Libraries/XMCLib/src/xmc_fce.c ****     while (length)
+ 571              	 .loc 1 227 0
+ 572 0054 1CE0     	 b .L34
+ 573              	.L35:
+ 228:../Libraries/XMCLib/src/xmc_fce.c ****     {
+ 229:../Libraries/XMCLib/src/xmc_fce.c ****       outbuffer[counter] = ((uint16_t)((uint16_t)inbuffer[bytecounter] << 8U) |
+ 574              	 .loc 1 229 0
+ 575 0056 FB8A     	 ldrh r3,[r7,#22]
+ 576 0058 5B00     	 lsls r3,r3,#1
+ 577 005a BA68     	 ldr r2,[r7,#8]
+ 578 005c 1344     	 add r3,r3,r2
+ 579 005e BA8A     	 ldrh r2,[r7,#20]
+ 580 0060 F968     	 ldr r1,[r7,#12]
+ 581 0062 0A44     	 add r2,r2,r1
+ 582 0064 1278     	 ldrb r2,[r2]
+ 583 0066 92B2     	 uxth r2,r2
+ 584 0068 1202     	 lsls r2,r2,#8
+ 585 006a 91B2     	 uxth r1,r2
+ 230:../Libraries/XMCLib/src/xmc_fce.c ****                             (inbuffer[bytecounter + 1U]));
+ 586              	 .loc 1 230 0
+ 587 006c BA8A     	 ldrh r2,[r7,#20]
+ 588 006e 0132     	 adds r2,r2,#1
+ 589 0070 F868     	 ldr r0,[r7,#12]
+ 590 0072 0244     	 add r2,r2,r0
+ 591 0074 1278     	 ldrb r2,[r2]
+ 229:../Libraries/XMCLib/src/xmc_fce.c ****                             (inbuffer[bytecounter + 1U]));
+ 592              	 .loc 1 229 0
+ 593 0076 92B2     	 uxth r2,r2
+ 594 0078 0A43     	 orrs r2,r2,r1
+ 595 007a 92B2     	 uxth r2,r2
+ 596 007c 1A80     	 strh r2,[r3]
+ 231:../Libraries/XMCLib/src/xmc_fce.c ****       counter += 1U;
+ 597              	 .loc 1 231 0
+ 598 007e FB8A     	 ldrh r3,[r7,#22]
+ 599 0080 0133     	 adds r3,r3,#1
+ 600 0082 FB82     	 strh r3,[r7,#22]
+ 232:../Libraries/XMCLib/src/xmc_fce.c ****       bytecounter += 2U;
+ 601              	 .loc 1 232 0
+ 602 0084 BB8A     	 ldrh r3,[r7,#20]
+ 603 0086 0233     	 adds r3,r3,#2
+ 604 0088 BB82     	 strh r3,[r7,#20]
+ 233:../Libraries/XMCLib/src/xmc_fce.c ****       length -= 2U;
+ 605              	 .loc 1 233 0
+ 606 008a FB88     	 ldrh r3,[r7,#6]
+ 607 008c 023B     	 subs r3,r3,#2
+ 608 008e FB80     	 strh r3,[r7,#6]
+ 609              	.L34:
+ 227:../Libraries/XMCLib/src/xmc_fce.c ****     {
+ 610              	 .loc 1 227 0
+ 611 0090 FB88     	 ldrh r3,[r7,#6]
+ 612 0092 002B     	 cmp r3,#0
+ 613 0094 DFD1     	 bne .L35
+ 614              	.L30:
+ 234:../Libraries/XMCLib/src/xmc_fce.c ****     }
+ 235:../Libraries/XMCLib/src/xmc_fce.c ****   }
+ 236:../Libraries/XMCLib/src/xmc_fce.c **** }
+ 615              	 .loc 1 236 0
+ 616 0096 1C37     	 adds r7,r7,#28
+ 617              	.LCFI37:
+ 618              	 .cfi_def_cfa_offset 4
+ 619 0098 BD46     	 mov sp,r7
+ 620              	.LCFI38:
+ 621              	 .cfi_def_cfa_register 13
+ 622              	 
+ 623 009a 5DF8047B 	 ldr r7,[sp],#4
+ 624              	.LCFI39:
+ 625              	 .cfi_restore 7
+ 626              	 .cfi_def_cfa_offset 0
+ 627 009e 7047     	 bx lr
+ 628              	 .cfi_endproc
+ 629              	.LFE192:
+ 631              	 .section .text.XMC_FCE_LittleEndian32bit,"ax",%progbits
+ 632              	 .align 2
+ 633              	 .global XMC_FCE_LittleEndian32bit
+ 634              	 .thumb
+ 635              	 .thumb_func
+ 637              	XMC_FCE_LittleEndian32bit:
+ 638              	.LFB193:
+ 237:../Libraries/XMCLib/src/xmc_fce.c **** 
+ 238:../Libraries/XMCLib/src/xmc_fce.c **** /* Change endianness of 32-bit input buffer */
+ 239:../Libraries/XMCLib/src/xmc_fce.c **** void XMC_FCE_LittleEndian32bit(uint8_t* inbuffer, uint32_t* outbuffer, uint16_t length)
+ 240:../Libraries/XMCLib/src/xmc_fce.c **** {
+ 639              	 .loc 1 240 0
+ 640              	 .cfi_startproc
+ 641              	 
+ 642              	 
+ 643              	 
+ 644 0000 80B4     	 push {r7}
+ 645              	.LCFI40:
+ 646              	 .cfi_def_cfa_offset 4
+ 647              	 .cfi_offset 7,-4
+ 648 0002 87B0     	 sub sp,sp,#28
+ 649              	.LCFI41:
+ 650              	 .cfi_def_cfa_offset 32
+ 651 0004 00AF     	 add r7,sp,#0
+ 652              	.LCFI42:
+ 653              	 .cfi_def_cfa_register 7
+ 654 0006 F860     	 str r0,[r7,#12]
+ 655 0008 B960     	 str r1,[r7,#8]
+ 656 000a 1346     	 mov r3,r2
+ 657 000c FB80     	 strh r3,[r7,#6]
+ 241:../Libraries/XMCLib/src/xmc_fce.c ****   uint16_t counter = 0U;
+ 658              	 .loc 1 241 0
+ 659 000e 0023     	 movs r3,#0
+ 660 0010 FB82     	 strh r3,[r7,#22]
+ 242:../Libraries/XMCLib/src/xmc_fce.c ****   uint16_t bytecounter = 0U;
+ 661              	 .loc 1 242 0
+ 662 0012 0023     	 movs r3,#0
+ 663 0014 BB82     	 strh r3,[r7,#20]
+ 243:../Libraries/XMCLib/src/xmc_fce.c ****  
+ 244:../Libraries/XMCLib/src/xmc_fce.c ****   if ((length & 0x03U) == 0)
+ 664              	 .loc 1 244 0
+ 665 0016 FB88     	 ldrh r3,[r7,#6]
+ 666 0018 03F00303 	 and r3,r3,#3
+ 667 001c 002B     	 cmp r3,#0
+ 668 001e 44D1     	 bne .L36
+ 245:../Libraries/XMCLib/src/xmc_fce.c ****   {
+ 246:../Libraries/XMCLib/src/xmc_fce.c ****     for (counter = 0U; counter < (length >> 2U); counter++)
+ 669              	 .loc 1 246 0
+ 670 0020 0023     	 movs r3,#0
+ 671 0022 FB82     	 strh r3,[r7,#22]
+ 672 0024 08E0     	 b .L38
+ 673              	.L39:
+ 247:../Libraries/XMCLib/src/xmc_fce.c ****     {
+ 248:../Libraries/XMCLib/src/xmc_fce.c ****       outbuffer[counter] = 0U;
+ 674              	 .loc 1 248 0 discriminator 3
+ 675 0026 FB8A     	 ldrh r3,[r7,#22]
+ 676 0028 9B00     	 lsls r3,r3,#2
+ 677 002a BA68     	 ldr r2,[r7,#8]
+ 678 002c 1344     	 add r3,r3,r2
+ 679 002e 0022     	 movs r2,#0
+ 680 0030 1A60     	 str r2,[r3]
+ 246:../Libraries/XMCLib/src/xmc_fce.c ****     {
+ 681              	 .loc 1 246 0 discriminator 3
+ 682 0032 FB8A     	 ldrh r3,[r7,#22]
+ 683 0034 0133     	 adds r3,r3,#1
+ 684 0036 FB82     	 strh r3,[r7,#22]
+ 685              	.L38:
+ 246:../Libraries/XMCLib/src/xmc_fce.c ****     {
+ 686              	 .loc 1 246 0 is_stmt 0 discriminator 1
+ 687 0038 FB88     	 ldrh r3,[r7,#6]
+ 688 003a 9B08     	 lsrs r3,r3,#2
+ 689 003c 9BB2     	 uxth r3,r3
+ 690 003e FA8A     	 ldrh r2,[r7,#22]
+ 691 0040 9A42     	 cmp r2,r3
+ 692 0042 F0D3     	 bcc .L39
+ 249:../Libraries/XMCLib/src/xmc_fce.c ****     }
+ 250:../Libraries/XMCLib/src/xmc_fce.c **** 
+ 251:../Libraries/XMCLib/src/xmc_fce.c ****     outbuffer[counter] = 0U;
+ 693              	 .loc 1 251 0 is_stmt 1
+ 694 0044 FB8A     	 ldrh r3,[r7,#22]
+ 695 0046 9B00     	 lsls r3,r3,#2
+ 696 0048 BA68     	 ldr r2,[r7,#8]
+ 697 004a 1344     	 add r3,r3,r2
+ 698 004c 0022     	 movs r2,#0
+ 699 004e 1A60     	 str r2,[r3]
+ 252:../Libraries/XMCLib/src/xmc_fce.c ****     counter = 0U;
+ 700              	 .loc 1 252 0
+ 701 0050 0023     	 movs r3,#0
+ 702 0052 FB82     	 strh r3,[r7,#22]
+ 253:../Libraries/XMCLib/src/xmc_fce.c **** 
+ 254:../Libraries/XMCLib/src/xmc_fce.c ****     while (length)
+ 703              	 .loc 1 254 0
+ 704 0054 26E0     	 b .L40
+ 705              	.L41:
+ 255:../Libraries/XMCLib/src/xmc_fce.c ****     {
+ 256:../Libraries/XMCLib/src/xmc_fce.c ****       outbuffer[counter] = ((uint32_t)inbuffer[bytecounter]      << 24U) |
+ 706              	 .loc 1 256 0
+ 707 0056 FB8A     	 ldrh r3,[r7,#22]
+ 708 0058 9B00     	 lsls r3,r3,#2
+ 709 005a BA68     	 ldr r2,[r7,#8]
+ 710 005c 1344     	 add r3,r3,r2
+ 711 005e BA8A     	 ldrh r2,[r7,#20]
+ 712 0060 F968     	 ldr r1,[r7,#12]
+ 713 0062 0A44     	 add r2,r2,r1
+ 714 0064 1278     	 ldrb r2,[r2]
+ 715 0066 1106     	 lsls r1,r2,#24
+ 257:../Libraries/XMCLib/src/xmc_fce.c ****                            ((uint32_t)inbuffer[bytecounter + 1U] << 16U) |
+ 716              	 .loc 1 257 0
+ 717 0068 BA8A     	 ldrh r2,[r7,#20]
+ 718 006a 0132     	 adds r2,r2,#1
+ 719 006c F868     	 ldr r0,[r7,#12]
+ 720 006e 0244     	 add r2,r2,r0
+ 721 0070 1278     	 ldrb r2,[r2]
+ 722 0072 1204     	 lsls r2,r2,#16
+ 256:../Libraries/XMCLib/src/xmc_fce.c ****                            ((uint32_t)inbuffer[bytecounter + 1U] << 16U) |
+ 723              	 .loc 1 256 0
+ 724 0074 1143     	 orrs r1,r1,r2
+ 258:../Libraries/XMCLib/src/xmc_fce.c ****                            ((uint32_t)inbuffer[bytecounter + 2U] <<  8U) |
+ 725              	 .loc 1 258 0
+ 726 0076 BA8A     	 ldrh r2,[r7,#20]
+ 727 0078 0232     	 adds r2,r2,#2
+ 728 007a F868     	 ldr r0,[r7,#12]
+ 729 007c 0244     	 add r2,r2,r0
+ 730 007e 1278     	 ldrb r2,[r2]
+ 731 0080 1202     	 lsls r2,r2,#8
+ 257:../Libraries/XMCLib/src/xmc_fce.c ****                            ((uint32_t)inbuffer[bytecounter + 1U] << 16U) |
+ 732              	 .loc 1 257 0
+ 733 0082 0A43     	 orrs r2,r2,r1
+ 259:../Libraries/XMCLib/src/xmc_fce.c ****                            (inbuffer[bytecounter + 3U]);
+ 734              	 .loc 1 259 0
+ 735 0084 B98A     	 ldrh r1,[r7,#20]
+ 736 0086 0331     	 adds r1,r1,#3
+ 737 0088 F868     	 ldr r0,[r7,#12]
+ 738 008a 0144     	 add r1,r1,r0
+ 739 008c 0978     	 ldrb r1,[r1]
+ 258:../Libraries/XMCLib/src/xmc_fce.c ****                            ((uint32_t)inbuffer[bytecounter + 2U] <<  8U) |
+ 740              	 .loc 1 258 0
+ 741 008e 0A43     	 orrs r2,r2,r1
+ 256:../Libraries/XMCLib/src/xmc_fce.c ****                            ((uint32_t)inbuffer[bytecounter + 1U] << 16U) |
+ 742              	 .loc 1 256 0
+ 743 0090 1A60     	 str r2,[r3]
+ 260:../Libraries/XMCLib/src/xmc_fce.c ****       counter += 1U;
+ 744              	 .loc 1 260 0
+ 745 0092 FB8A     	 ldrh r3,[r7,#22]
+ 746 0094 0133     	 adds r3,r3,#1
+ 747 0096 FB82     	 strh r3,[r7,#22]
+ 261:../Libraries/XMCLib/src/xmc_fce.c ****       bytecounter += 4U;
+ 748              	 .loc 1 261 0
+ 749 0098 BB8A     	 ldrh r3,[r7,#20]
+ 750 009a 0433     	 adds r3,r3,#4
+ 751 009c BB82     	 strh r3,[r7,#20]
+ 262:../Libraries/XMCLib/src/xmc_fce.c ****       length -= 4U;
+ 752              	 .loc 1 262 0
+ 753 009e FB88     	 ldrh r3,[r7,#6]
+ 754 00a0 043B     	 subs r3,r3,#4
+ 755 00a2 FB80     	 strh r3,[r7,#6]
+ 756              	.L40:
+ 254:../Libraries/XMCLib/src/xmc_fce.c ****     {
+ 757              	 .loc 1 254 0
+ 758 00a4 FB88     	 ldrh r3,[r7,#6]
+ 759 00a6 002B     	 cmp r3,#0
+ 760 00a8 D5D1     	 bne .L41
+ 761              	.L36:
+ 263:../Libraries/XMCLib/src/xmc_fce.c ****     }
+ 264:../Libraries/XMCLib/src/xmc_fce.c ****   }
+ 265:../Libraries/XMCLib/src/xmc_fce.c **** }
+ 762              	 .loc 1 265 0
+ 763 00aa 1C37     	 adds r7,r7,#28
+ 764              	.LCFI43:
+ 765              	 .cfi_def_cfa_offset 4
+ 766 00ac BD46     	 mov sp,r7
+ 767              	.LCFI44:
+ 768              	 .cfi_def_cfa_register 13
+ 769              	 
+ 770 00ae 5DF8047B 	 ldr r7,[sp],#4
+ 771              	.LCFI45:
+ 772              	 .cfi_restore 7
+ 773              	 .cfi_def_cfa_offset 0
+ 774 00b2 7047     	 bx lr
+ 775              	 .cfi_endproc
+ 776              	.LFE193:
+ 778              	 .text
+ 779              	.Letext0:
+ 780              	 .file 2 "c:\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 781              	 .file 3 "c:\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\stdint.h"
+ 782              	 .file 4 "C:/Users/emob/Desktop/smartlogger/design/firmware/xmc4500/smart_logger/smart_logger/Libraries/CMSIS/Infineon/XMC4500_series/Include/XMC4500.h"
+ 783              	 .file 5 "C:/Users/emob/Desktop/smartlogger/design/firmware/xmc4500/smart_logger/smart_logger/Libraries/XMCLib/inc/xmc_fce.h"
+ 784              	 .file 6 "C:/Users/emob/Desktop/smartlogger/design/firmware/xmc4500/smart_logger/smart_logger/Libraries/XMCLib/inc/xmc4_scu.h"
+ 785              	 .file 7 "C:/Users/emob/Desktop/smartlogger/design/firmware/xmc4500/smart_logger/smart_logger/Libraries/CMSIS/Include/core_cm4.h"
+ 786              	 .file 8 "C:/Users/emob/Desktop/smartlogger/design/firmware/xmc4500/smart_logger/smart_logger/Libraries/CMSIS/Infineon/XMC4500_series/Include/system_XMC4500.h"
+DEFINED SYMBOLS
+                            *ABS*:00000000 xmc_fce.c
+    {standard input}:20     .text.XMC_FCE_Init:00000000 $t
+    {standard input}:25     .text.XMC_FCE_Init:00000000 XMC_FCE_Init
+    {standard input}:76     .text.XMC_FCE_Disable:00000000 $t
+    {standard input}:81     .text.XMC_FCE_Disable:00000000 XMC_FCE_Disable
+    {standard input}:109    .text.XMC_FCE_Disable:00000018 $d
+    {standard input}:115    .text.XMC_FCE_Enable:00000000 $t
+    {standard input}:120    .text.XMC_FCE_Enable:00000000 XMC_FCE_Enable
+    {standard input}:148    .text.XMC_FCE_Enable:00000018 $d
+    {standard input}:154    .text.XMC_FCE_CalculateCRC8:00000000 $t
+    {standard input}:159    .text.XMC_FCE_CalculateCRC8:00000000 XMC_FCE_CalculateCRC8
+    {standard input}:242    .text.XMC_FCE_CalculateCRC16:00000000 $t
+    {standard input}:247    .text.XMC_FCE_CalculateCRC16:00000000 XMC_FCE_CalculateCRC16
+    {standard input}:336    .text.XMC_FCE_CalculateCRC32:00000000 $t
+    {standard input}:341    .text.XMC_FCE_CalculateCRC32:00000000 XMC_FCE_CalculateCRC32
+    {standard input}:429    .text.XMC_FCE_TriggerMismatch:00000000 $t
+    {standard input}:434    .text.XMC_FCE_TriggerMismatch:00000000 XMC_FCE_TriggerMismatch
+    {standard input}:500    .text.XMC_FCE_LittleEndian16bit:00000000 $t
+    {standard input}:505    .text.XMC_FCE_LittleEndian16bit:00000000 XMC_FCE_LittleEndian16bit
+    {standard input}:632    .text.XMC_FCE_LittleEndian32bit:00000000 $t
+    {standard input}:637    .text.XMC_FCE_LittleEndian32bit:00000000 XMC_FCE_LittleEndian32bit
+                     .debug_frame:00000010 $d
+
+UNDEFINED SYMBOLS
+XMC_SCU_RESET_AssertPeripheralReset
+XMC_SCU_RESET_DeassertPeripheralReset
