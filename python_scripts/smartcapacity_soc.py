@@ -10,7 +10,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
-data_path = "2020 08 26_data_erhan.txt"
+data_path = "../collected_data/2020 08 26_data_erhan.txt"
 #data = pd.read_csv(data_path,sep=':',skiprows=520, nrows=50)
 data = pd.read_csv(data_path,sep=':')
 

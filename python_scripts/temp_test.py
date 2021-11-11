@@ -10,7 +10,7 @@ import numpy as np
 import os.path
 
 for days in range(31):
-    data_file_name = "2020 03 %02d_temp_erhan.txt" % (days+1)
+    data_file_name = "../collected_data/2020 03 %02d_temp_erhan.txt" % (days+1)
     if(os.path.isfile(data_file_name)):
         data = pd.read_csv(data_file_name,sep=':',header=None)
         data = data.drop([0], axis=1)

@@ -16,7 +16,7 @@ import matplotlib.pyplot as plt
 # data from 2019.07 to 2020.08
 
 for days in range(31):
-    data_file_name = "2020 08 %02d_data_erhan.txt" % (days+1)
+    data_file_name = "../collected_data/2020 08 %02d_data_erhan.txt" % (days+1)
     if(os.path.isfile(data_file_name)):
         data = pd.read_csv(data_file_name,sep=':',header=None)
         data = data.drop([0], axis=1)
@@ -25,7 +25,7 @@ for days in range(31):
         x=pd.Series(np.arange(0, sample_counts/60,1/60))
         data = pd.concat([x, data], axis=1)
         data.columns = ['Time(Minutes)','Voltage(V)', 'Current(A)','Velocity(km/h)','SoC']
-    temp_file_name = "2020 08 %02d_temp_erhan.txt" % (days+1)
+    temp_file_name = "../collected_data/2020 08 %02d_temp_erhan.txt" % (days+1)
     if(os.path.isfile(temp_file_name)):
         temp = pd.read_csv(temp_file_name,sep=':',header=None)
         temp = temp.drop([0], axis=1)
